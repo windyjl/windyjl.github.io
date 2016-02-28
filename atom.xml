@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-02-27T06:32:39.307Z</updated>
+  <updated>2016-02-28T14:42:28.925Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,40 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>PKU ACM 1001 Exponentiation</title>
+    <link href="http://yoursite.com/2016/02/28/PKU-ACM-1001-Exponentiation/"/>
+    <id>http://yoursite.com/2016/02/28/PKU-ACM-1001-Exponentiation/</id>
+    <published>2016-02-28T14:28:29.000Z</published>
+    <updated>2016-02-28T14:42:28.925Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;Problems involving the computation of exact values of very large magnitude and precision are common. For example, the computation of the national debt is a taxing experience for many computer systems. &lt;/p&gt;
+&lt;p&gt;This problem requires that you write a program to compute the exact value of Rn where R is a real number ( 0.0 &amp;lt; R &amp;lt; 99.999 ) and n is an integer such that 0 &amp;lt; n &amp;lt;= 25.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;输入R和N，就R的N次方输出结果。&lt;br&gt;坑点，头尾的0要去掉。&lt;/p&gt;
+&lt;p&gt;思路，看到别人的代码用两个while从两头取0，然后输出substring。我却觉得要求去掉头部的0比较适合正则表达式来处理。匹配掉头尾的0，中间用一个括号取出分组。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;其实提交没过2333
+&lt;/code&gt;&lt;/pre&gt;&lt;figure class=&quot;highlight actionscript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;preprocessor&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; java.util.*;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;preprocessor&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; java.math.BigDecimal;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;preprocessor&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; java.util.regex.*;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Main&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;static&lt;/span&gt; Scanner &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt; = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Scanner(System.&lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; main(String []args)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        BigDecimal r,res;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        int n;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        String str;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        int x,y;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        Pattern pat = Pattern.compile(&lt;span class=&quot;string&quot;&gt;&quot;^0*(.*?)0*$&quot;&lt;/span&gt;);&lt;span class=&quot;comment&quot;&gt;//&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        Matcher matcher;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;while&lt;/span&gt; (&lt;span class=&quot;literal&quot;&gt;true&lt;/span&gt;) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            r = &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt;.nextBigDecimal();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            n = &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt;.nextInt();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            res = r.pow(n);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            str = res.toPlainString();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;comment&quot;&gt;//System.out.println(str);&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            matcher = pat.matcher(str);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (matcher.find()) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                System.out.println(matcher.group(&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;Problems involving the computation of exact values of very large magnitude and precision are common. For example, the comput
+    
+    </summary>
+    
+    
+      <category term="1001" scheme="http://yoursite.com/tags/1001/"/>
+    
+      <category term="ACM" scheme="http://yoursite.com/tags/ACM/"/>
+    
+      <category term="Exponentiation" scheme="http://yoursite.com/tags/Exponentiation/"/>
+    
+      <category term="PKU" scheme="http://yoursite.com/tags/PKU/"/>
+    
+  </entry>
   
   <entry>
     <title>Hello World</title>
@@ -46,7 +80,7 @@
     <title>my 1st post</title>
     <link href="http://yoursite.com/2016/02/27/my-1st-post/"/>
     <id>http://yoursite.com/2016/02/27/my-1st-post/</id>
-    <published>2016-02-27T07:15:33.000Z</published>
+    <published>2016-02-27T08:15:33.000Z</published>
     <updated>2016-02-27T08:59:43.288Z</updated>
     
     <content type="html">&lt;h1 id=&quot;MD测试&quot;&gt;&lt;a href=&quot;#MD测试&quot; class=&quot;headerlink&quot; title=&quot;MD测试&quot;&gt;&lt;/a&gt;MD测试&lt;/h1&gt;&lt;p&gt;这是一段文字&lt;br&gt;        这应该是一段能带吗&lt;/p&gt;
