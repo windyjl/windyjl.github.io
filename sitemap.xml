@@ -2,16 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2016/03/01/PKU-ACM-1007-DNA-Sorting/</loc>
+    
+    <lastmod>2016-03-01T13:35:57.944Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2016/02/29/PKU-ACM-1002-487-3279/</loc>
     
-    <lastmod>2016-02-29T09:03:02.747Z</lastmod>
+    <lastmod>2016-03-01T13:26:34.273Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2016/02/28/PKU-ACM-1001-Exponentiation/</loc>
     
-    <lastmod>2016-02-28T14:42:28.925Z</lastmod>
+    <lastmod>2016-03-01T13:26:31.724Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2016/03/01/PKU-ACM-1006-Biorhythms/</loc>
+    
+    <lastmod>2016-03-01T13:26:27.878Z</lastmod>
     
   </url>
   
