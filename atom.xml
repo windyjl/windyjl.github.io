@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-03-02T04:25:17.091Z</updated>
+  <updated>2016-03-02T14:40:22.844Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>VS自动补全 设置</title>
+    <link href="http://yoursite.com/2016/03/02/VS%E8%87%AA%E5%8A%A8%E8%A1%A5%E5%85%A8-%E8%AE%BE%E7%BD%AE/"/>
+    <id>http://yoursite.com/2016/03/02/VS自动补全-设置/</id>
+    <published>2016-03-02T13:58:24.000Z</published>
+    <updated>2016-03-02T14:40:22.844Z</updated>
+    
+    <content type="html">&lt;p&gt;VS自带的代码补全功能不支持支持跳字输入的情况，比如v3不会匹配到Vector3。因为一直习惯了这样的输入方式，有点不爽，就开始找原因。&lt;/p&gt;
+&lt;p&gt;在不是很懂的情况多试了一些复选框，Listboxes选项卡的第一个条“Enable Visual Assist Completion……”。&lt;br&gt;勾上就好了，提示框会忽略顺序，优先在列表里找出顺序符合，匹配字数最多的。原来之前都没勾上，用的全是VS自带的补全XP。&lt;/p&gt;
+&lt;p&gt;VS自带的攻能名字叫&lt;strong&gt;intellisense&lt;/strong&gt;，智能感知。&lt;br&gt;&lt;strong&gt;Snippet&lt;/strong&gt;更偏向if(){}else{}一类吧，虽然以前在Sublime上下插件的时候有补全插件用这类名字命名。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;VS自带的代码补全功能不支持支持跳字输入的情况，比如v3不会匹配到Vector3。因为一直习惯了这样的输入方式，有点不爽，就开始找原因。&lt;/p&gt;
+&lt;p&gt;在不是很懂的情况多试了一些复选框，Listboxes选项卡的第一个条“Enable Visual Assist Compl
+    
+    </summary>
+    
+    
+      <category term="VA" scheme="http://yoursite.com/tags/VA/"/>
+    
+      <category term="VS" scheme="http://yoursite.com/tags/VS/"/>
+    
+  </entry>
   
   <entry>
     <title>PKU ACM 1008 Maya Calendar</title>
