@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-03-02T14:40:22.844Z</updated>
+  <updated>2016-03-03T14:21:07.831Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>鸡汤001</title>
+    <link href="http://yoursite.com/2016/03/03/%E9%B8%A1%E6%B1%A4001/"/>
+    <id>http://yoursite.com/2016/03/03/鸡汤001/</id>
+    <published>2016-03-03T14:09:11.000Z</published>
+    <updated>2016-03-03T14:21:07.831Z</updated>
+    
+    <content type="html">&lt;p&gt;如果我要把现在这种习惯坚持下去的话，需要不断用鸡汤毒自己。通过这里把幼稚的东西通通写出来，供将来的自己嘲笑，也供别人嘲笑，然后硬着头皮走。&lt;/p&gt;
+&lt;p&gt;昨天做ACM1009的时候又碰上麻烦了，应该算第一道需要一点点数学思考的题目，不能用单纯的程序方法处理了。&lt;br&gt;在思考数学解法的时候，脑子一团浆糊，于是就暂时放弃了。那些饿着肚子，超过了预定时间还坚持写了半天的代码也变得毫无用处。情绪怎么也高涨不起来。&lt;/p&gt;
+&lt;p&gt;想想如果做游戏的话，不但代码可能重新写，连设计也可能不符合要求。到时候不得不提起精神仔细分析状况——判断是改进现在的做法还是另寻途径。&lt;br&gt;到时候如果抱着现在这样的心态，遇到一点问题就没精神的话，恐怕是没办法继续前进的。不论是判断现状还是寻找新办法，只会原地踏步而已。最后像爆竹一样，只有一瞬间的光亮。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;如果我要把现在这种习惯坚持下去的话，需要不断用鸡汤毒自己。通过这里把幼稚的东西通通写出来，供将来的自己嘲笑，也供别人嘲笑，然后硬着头皮走。&lt;/p&gt;
+&lt;p&gt;昨天做ACM1009的时候又碰上麻烦了，应该算第一道需要一点点数学思考的题目，不能用单纯的程序方法处理了。&lt;br&gt;在思考
+    
+    </summary>
+    
+    
+      <category term="鸡汤" scheme="http://yoursite.com/tags/%E9%B8%A1%E6%B1%A4/"/>
+    
+  </entry>
   
   <entry>
     <title>VS自动补全 设置</title>
