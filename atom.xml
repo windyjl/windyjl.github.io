@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-03-09T14:56:46.069Z</updated>
+  <updated>2016-03-10T01:59:00.755Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,10 +20,9 @@
     <link href="http://yoursite.com/2016/03/09/git-%E7%AC%94%E8%AE%B0/"/>
     <id>http://yoursite.com/2016/03/09/git-笔记/</id>
     <published>2016-03-09T14:50:55.000Z</published>
-    <updated>2016-03-09T14:56:46.069Z</updated>
+    <updated>2016-03-10T01:59:00.755Z</updated>
     
-    <content type="html">&lt;p&gt;#忽略已经跟踪的文件&lt;/p&gt;
-&lt;p&gt;某工程project用Git管理代码，但是在他的根目录下有个配置文件，比如project.iws是不需要git每次跟踪它的修改记录的。&lt;br&gt;一般做法是在.gitignore文件中添加一行&lt;/p&gt;
+    <content type="html">&lt;h1 id=&quot;忽略已经跟踪的文件&quot;&gt;&lt;a href=&quot;#忽略已经跟踪的文件&quot; class=&quot;headerlink&quot; title=&quot;忽略已经跟踪的文件&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://blog.csdn.net/huguohuan/article/details/7380349&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;忽略已经跟踪的文件&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;某工程project用Git管理代码，但是在他的根目录下有个配置文件，比如project.iws是不需要git每次跟踪它的修改记录的。&lt;br&gt;一般做法是在.gitignore文件中添加一行&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;project.iws  &lt;/p&gt;
 &lt;/blockquote&gt;
@@ -33,14 +32,12 @@
 &lt;pre&gt;&lt;code&gt;自己补充
 如果要忽略一整个文件夹，跟.gitignore文件的写法一样，比如 git rm --cached Library/ 。
 git 提示我需要加-r ，加载末尾就好了
-&lt;/code&gt;&lt;/pre&gt;</content>
+&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&quot;忽略特殊文件&quot;&gt;&lt;a href=&quot;#忽略特殊文件&quot; class=&quot;headerlink&quot; title=&quot;忽略特殊文件&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/0013758404317281e54b6f5375640abbb11e67be4cd49e0000&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;忽略特殊文件&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;文章介绍了github已经推荐的一些配置文件，针对各种语言、系统容易自动生成的文件做了各种配置。&lt;br&gt;地址:(&lt;a href=&quot;https://github.com/github/gitignore&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/github/gitignore&lt;/a&gt;)&lt;/p&gt;
+</content>
     
     <summary type="html">
     
-      &lt;p&gt;#忽略已经跟踪的文件&lt;/p&gt;
-&lt;p&gt;某工程project用Git管理代码，但是在他的根目录下有个配置文件，比如project.iws是不需要git每次跟踪它的修改记录的。&lt;br&gt;一般做法是在.gitignore文件中添加一行&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;proj
+      &lt;h1 id=&quot;忽略已经跟踪的文件&quot;&gt;&lt;a href=&quot;#忽略已经跟踪的文件&quot; class=&quot;headerlink&quot; title=&quot;忽略已经跟踪的文件&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://blog.csdn.net/huguohuan/article/details/738
     
     </summary>
     
@@ -263,7 +260,7 @@ git 提示我需要加-r ，加载末尾就好了
     <link href="http://yoursite.com/2016/02/28/PKU-ACM-1001-Exponentiation/"/>
     <id>http://yoursite.com/2016/02/28/PKU-ACM-1001-Exponentiation/</id>
     <published>2016-02-28T14:28:29.000Z</published>
-    <updated>2016-03-01T13:26:31.724Z</updated>
+    <updated>2016-03-10T02:53:13.662Z</updated>
     
     <content type="html">&lt;blockquote&gt;
 &lt;p&gt;Problems involving the computation of exact values of very large magnitude and precision are common. For example, the computation of the national debt is a taxing experience for many computer systems. &lt;/p&gt;
@@ -272,7 +269,7 @@ git 提示我需要加-r ，加载末尾就好了
 &lt;p&gt;输入R和N，就R的N次方输出结果。&lt;br&gt;坑点，头尾的0要去掉。&lt;/p&gt;
 &lt;p&gt;思路，看到别人的代码用两个while从两头取0，然后输出substring。我却觉得要求去掉头部的0比较适合正则表达式来处理。匹配掉头尾的0，中间用一个括号取出分组。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;其实提交没过2333
-&lt;/code&gt;&lt;/pre&gt;&lt;figure class=&quot;highlight actionscript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;preprocessor&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; java.util.*;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;preprocessor&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; java.math.BigDecimal;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;preprocessor&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; java.util.regex.*;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Main&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;static&lt;/span&gt; Scanner &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt; = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Scanner(System.&lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; main(String []args)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        BigDecimal r,res;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        int n;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        String str;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        int x,y;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        Pattern pat = Pattern.compile(&lt;span class=&quot;string&quot;&gt;&quot;^0*(.*?)0*$&quot;&lt;/span&gt;);&lt;span class=&quot;comment&quot;&gt;//&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        Matcher matcher;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;while&lt;/span&gt; (&lt;span class=&quot;literal&quot;&gt;true&lt;/span&gt;) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            r = &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt;.nextBigDecimal();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            n = &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt;.nextInt();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            res = r.pow(n);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            str = res.toPlainString();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;comment&quot;&gt;//System.out.println(str);&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            matcher = pat.matcher(str);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (matcher.find()) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                System.out.println(matcher.group(&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</content>
+&lt;/code&gt;&lt;/pre&gt;&lt;figure class=&quot;highlight&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;import java.util.*;&amp;#10;import java.math.BigDecimal;&amp;#10;import java.util.regex.*;&amp;#10;public class Main&amp;#10;&amp;#123;&amp;#10;    public static Scanner in = new Scanner(System.in);&amp;#10;    public static void main(String []args)&amp;#10;    &amp;#123;&amp;#10;        BigDecimal r,res;&amp;#10;        int n;&amp;#10;        String str;&amp;#10;        int x,y;&amp;#10;        Pattern pat = Pattern.compile(&amp;#34;^0*(.*?)0*$&amp;#34;);//&amp;#39;&amp;#10;        Matcher matcher;&amp;#10;        while (true) &amp;#123;&amp;#10;            r = in.nextBigDecimal();&amp;#10;            n = in.nextInt();&amp;#10;            res = r.pow(n);&amp;#10;            str = res.toPlainString();&amp;#10;            //System.out.println(str);&amp;#10;            matcher = pat.matcher(str);&amp;#10;            if (matcher.find()) &amp;#123;&amp;#10;                System.out.println(matcher.group(1));&amp;#10;            &amp;#125;&amp;#10;        &amp;#125;&amp;#10;    &amp;#125;&amp;#10;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</content>
     
     <summary type="html">
     
