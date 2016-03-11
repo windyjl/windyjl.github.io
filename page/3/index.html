@@ -214,6 +214,103 @@
             
               
                 
+                <a class="post-title-link" href="/2016/02/28/PKU-ACM-1001-Exponentiation/" itemprop="url">
+                  PKU ACM 1001 Exponentiation
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-28T22:28:29+08:00" content="2016-02-28">
+              2016-02-28
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/28/PKU-ACM-1001-Exponentiation/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/28/PKU-ACM-1001-Exponentiation/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>Problems involving the computation of exact values of very large magnitude and precision are common. For example, the computation of the national debt is a taxing experience for many computer systems. </p>
+<p>This problem requires that you write a program to compute the exact value of Rn where R is a real number ( 0.0 &lt; R &lt; 99.999 ) and n is an integer such that 0 &lt; n &lt;= 25.</p>
+</blockquote>
+<p>输入R和N，就R的N次方输出结果。<br>坑点，头尾的0要去掉。</p>
+<p>思路，看到别人的代码用两个while从两头取0，然后输出substring。我却觉得要求去掉头部的0比较适合正则表达式来处理。匹配掉头尾的0，中间用一个括号取出分组。</p>
+<pre><code>其实提交没过2333
+</code></pre><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import java.util.*;&#10;import java.math.BigDecimal;&#10;import java.util.regex.*;&#10;public class Main&#10;&#123;&#10;    public static Scanner in = new Scanner(System.in);&#10;    public static void main(String []args)&#10;    &#123;&#10;        BigDecimal r,res;&#10;        int n;&#10;        String str;&#10;        int x,y;&#10;        Pattern pat = Pattern.compile(&#34;^0*(.*?)0*$&#34;);//&#39;&#10;        Matcher matcher;&#10;        while (true) &#123;&#10;            r = in.nextBigDecimal();&#10;            n = in.nextInt();&#10;            res = r.pow(n);&#10;            str = res.toPlainString();&#10;            //System.out.println(str);&#10;            matcher = pat.matcher(str);&#10;            if (matcher.find()) &#123;&#10;                System.out.println(matcher.group(1));&#10;            &#125;&#10;        &#125;&#10;    &#125;&#10;&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/02/27/hello-world/" itemprop="url">
                   Hello World
                 </a>
@@ -456,7 +553,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-count">13</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
