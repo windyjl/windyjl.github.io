@@ -59,15 +59,37 @@
 
 
 
-<meta name="description" content="Create a way make 1 to 0">
-<meta property="og:type" content="website">
-<meta property="og:title" content="StrikePhoenix">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="题目说的很绕，也可能是我鹰语不好的原因。最后借着别人的解读来完成题目。题目会给出多种邮票，一次最多买4张，固定额度。按一下有限度购买。
+
+种类多
+总数少优先
+组合中弹夹最高者优先
+
+坑：虽然Input的注释里说1 1 0 two of the same type。但是1,1,1和1,1,1竟然是两种不同的买法。并在Output里说明了，这是平等情况。我做完了才发现，不想改了。
+#总结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="1010 STAMPS">
+<meta property="og:url" content="http://yoursite.com/2016/03/11/1010-STAMPS/index.html">
 <meta property="og:site_name" content="StrikePhoenix">
-<meta property="og:description" content="Create a way make 1 to 0">
+<meta property="og:description" content="题目说的很绕，也可能是我鹰语不好的原因。最后借着别人的解读来完成题目。题目会给出多种邮票，一次最多买4张，固定额度。按一下有限度购买。
+
+种类多
+总数少优先
+组合中弹夹最高者优先
+
+坑：虽然Input的注释里说1 1 0 two of the same type。但是1,1,1和1,1,1竟然是两种不同的买法。并在Output里说明了，这是平等情况。我做完了才发现，不想改了。
+#总结">
+<meta property="og:updated_time" content="2016-03-11T08:56:00.163Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="StrikePhoenix">
-<meta name="twitter:description" content="Create a way make 1 to 0">
+<meta name="twitter:title" content="1010 STAMPS">
+<meta name="twitter:description" content="题目说的很绕，也可能是我鹰语不好的原因。最后借着别人的解读来完成题目。题目会给出多种邮票，一次最多买4张，固定额度。按一下有限度购买。
+
+种类多
+总数少优先
+组合中弹夹最高者优先
+
+坑：虽然Input的注释里说1 1 0 two of the same type。但是1,1,1和1,1,1竟然是两种不同的买法。并在Output里说明了，这是平等情况。我做完了才发现，不想改了。
+#总结">
 
 
 
@@ -85,7 +107,7 @@
   };
 </script>
 
-  <title> StrikePhoenix </title>
+  <title> 1010 STAMPS | StrikePhoenix </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -104,9 +126,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -185,24 +205,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
 
+  <div id="posts" class="posts-expand">
     
-
-    
-    
-      
-      
-        
-        
-        
-      
-
-      
-    
-
-    
-      
 
   
   
@@ -222,10 +227,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2016/03/11/1010-STAMPS/" itemprop="url">
-                  1010 STAMPS
-                </a>
+                1010 STAMPS
               
             
           </h1>
@@ -270,9 +272,7 @@
       
 
       
-        
-          
-            <p>题目说的很绕，也可能是我鹰语不好的原因。最后借着别人的解读来完成题目。<br>题目会给出多种邮票，一次最多买4张，固定额度。按一下有限度购买。</p>
+        <p>题目说的很绕，也可能是我鹰语不好的原因。最后借着别人的解读来完成题目。<br>题目会给出多种邮票，一次最多买4张，固定额度。按一下有限度购买。</p>
 <ol>
 <li>种类多</li>
 <li>总数少优先</li>
@@ -281,8 +281,6 @@
 <p><strong>坑：</strong>虽然Input的注释里说1 1 0 two of the same type。但是1,1,1和1,1,1竟然是两种不同的买法。并在Output里说明了，这是平等情况。我做完了才发现，不想改了。</p>
 <p>#总结<br>        因为不严谨的审题和思考，增加了大量冗长代码，修改也很麻烦。<br>        对Java语法和接口的不熟悉造成，浪费了很多时间在基础的对象复制和对比上。<br>        以下代码没有什么参考价值，我以后老了也不会回来改的。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br></pre></td><td class="code"><pre><span class="line">import java.util.Scanner;</span><br><span class="line">import java.util.HashMap;</span><br><span class="line">import java.util.ArrayList;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> Main</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class</span> Solution</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">public</span> ArrayList&lt;Integer&gt; stamps = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">int</span> kinds=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">int</span> maxdenominations=<span class="number">0</span>;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">Solution</span><span class="params">(ArrayList&lt;Integer&gt; <span class="built_in">list</span>)</span></span><br><span class="line">        </span>&#123;</span><br><span class="line">            boolean checkDuplicate = <span class="literal">false</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="built_in">list</span>.size(); ++i) &#123;</span><br><span class="line">                stamps.add(<span class="built_in">list</span>.get(i));</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> (<span class="built_in">list</span>.get(i)&gt;maxdenominations) &#123;</span><br><span class="line">                    maxdenominations = <span class="built_in">list</span>.get(i);</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> d=<span class="number">0</span>;d&lt;i ;++d ) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (<span class="built_in">list</span>.get(i)==stamps.get(d)) &#123;</span><br><span class="line">                        checkDuplicate = <span class="literal">true</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> (!checkDuplicate) &#123;</span><br><span class="line">                    kinds++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Scanner in = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">    <span class="comment">//public static HashMap map = new HashMap();</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> input;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> ArrayList&lt;Solution&gt; solList = <span class="keyword">new</span> ArrayList&lt;Solution&gt;();</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> ArrayList&lt;Integer&gt; stampList = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> ArrayList&lt;Integer&gt; requireList = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> boolean isTypeStamps = <span class="literal">true</span>;      <span class="comment">//true=stamp;false=customer</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        <span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">            input = in.nextInt();</span><br><span class="line">            <span class="keyword">if</span> (isTypeStamps) &#123; <span class="comment">//calc</span></span><br><span class="line">                <span class="keyword">if</span> (input==<span class="number">0</span>) &#123;</span><br><span class="line">                    isTypeStamps = <span class="literal">false</span>;</span><br><span class="line">                &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                    stampList.add(input);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">if</span> (input==<span class="number">0</span>) &#123;</span><br><span class="line">                    isTypeStamps = <span class="literal">true</span>;</span><br><span class="line">                    Duel();</span><br><span class="line">                    stampList.clear();</span><br><span class="line">                    requireList.clear();</span><br><span class="line">                &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                    requireList.add(input);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//find out all solution</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Duel</span><span class="params">()</span></span>&#123;</span><br><span class="line">        String str;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> r=<span class="number">0</span>; r&lt;requireList.size(); ++r) &#123;</span><br><span class="line">            str=<span class="string">""</span>;</span><br><span class="line">            <span class="comment">//first situation,all in == ok</span></span><br><span class="line">            <span class="keyword">if</span> (requireList.get(r)== getSum(stampList)) &#123;</span><br><span class="line">                str += requireList.get(r)+<span class="string">"("</span>+stampList.size()+<span class="string">"):"</span>+joinString(stampList);</span><br><span class="line">                System.out.println(str);</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                solList.clear();</span><br><span class="line">                <span class="keyword">int</span>[] choiceList = <span class="keyword">new</span> <span class="keyword">int</span>[stampList.size()+<span class="number">1</span>];</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;stampList.size(); ++i ) &#123;</span><br><span class="line">                    choiceList[i]=stampList.get(i);</span><br><span class="line">                &#125;</span><br><span class="line">                choiceList[stampList.size()] = <span class="number">0</span>;</span><br><span class="line">                ListOutAllSolution(<span class="number">0</span>,<span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">5</span>],choiceList,requireList.get(r));</span><br><span class="line">                checkOutDuplicate();</span><br><span class="line">                <span class="keyword">if</span> (solList.size()==<span class="number">0</span>) &#123;</span><br><span class="line">                    System.out.println(requireList.get(r)+<span class="string">" ---- none"</span>);</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (!sortSolutionMaxKinds(requireList.get(r).toString(),solList)) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (!sortSolutionMinStamps(requireList.get(r).toString(),solList)) &#123;</span><br><span class="line">                        <span class="keyword">if</span> (!sortSolutionMaxDenomination(requireList.get(r).toString(),solList)) &#123;</span><br><span class="line">                            System.out.println(<span class="string">"bug!!!!!!!!!!!!"</span>);</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//_arrSolution store Denominations of stamp</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">ListOutAllSolution</span><span class="params">(<span class="keyword">int</span> depth,<span class="keyword">int</span>[] _arrSolution,<span class="keyword">int</span>[] _arrChoice,<span class="keyword">int</span> _require)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (depth==<span class="number">4</span>) &#123;</span><br><span class="line">            <span class="comment">// String str="";</span></span><br><span class="line">            <span class="comment">// for (int i=0; i&lt;4; ++i) &#123;</span></span><br><span class="line">            <span class="comment">//  str += _arrSolution[i] +" ";</span></span><br><span class="line">            <span class="comment">// &#125;</span></span><br><span class="line">            <span class="comment">// System.out.println(str);</span></span><br><span class="line">            <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">4</span>; ++i) &#123;</span><br><span class="line">                <span class="keyword">if</span> (_arrSolution[i]==<span class="number">0</span>) &#123;</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                sum += _arrSolution[i];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (sum==_require) &#123;</span><br><span class="line">                ArrayList&lt;Integer&gt; <span class="built_in">list</span> = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">4</span>; ++i) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (_arrSolution[i]==<span class="number">0</span>) &#123;</span><br><span class="line">                        <span class="keyword">continue</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="built_in">list</span>.add(_arrSolution[i]);</span><br><span class="line">                &#125;</span><br><span class="line">                Solution sol = <span class="keyword">new</span> Solution(<span class="built_in">list</span>);</span><br><span class="line">                solList.add(sol);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span>[] arr = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">4</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;_arrChoice.length; ++i) &#123;</span><br><span class="line">            arr = _arrSolution.clone();</span><br><span class="line">            arr[depth]=_arrChoice[i];</span><br><span class="line">            ListOutAllSolution(depth+<span class="number">1</span>,arr,_arrChoice,_require);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">getSum</span><span class="params">(ArrayList&lt;Integer&gt; <span class="built_in">list</span>)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="built_in">list</span>.size(); ++i) &#123;</span><br><span class="line">            sum += <span class="built_in">list</span>.get(i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sum;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">joinString</span><span class="params">(ArrayList&lt;Integer&gt; <span class="built_in">list</span>)</span></span>&#123;</span><br><span class="line">        String str=<span class="string">""</span>;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">list</span>.size()==<span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> str+<span class="built_in">list</span>.get(<span class="number">0</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            str += <span class="built_in">list</span>.get(<span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;<span class="built_in">list</span>.size(); ++i) &#123;</span><br><span class="line">            str += <span class="string">" "</span>+<span class="built_in">list</span>.get(i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> str;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> boolean <span class="title">sortSolutionMaxDenomination</span><span class="params">(String require,ArrayList&lt;Solution&gt; <span class="built_in">list</span>)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> maxIndex = -<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> maxDeno = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> maxDenoDul = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">list</span>.size()==<span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="built_in">list</span>.size(); ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span> (maxDeno &lt; <span class="built_in">list</span>.get(i).maxdenominations) &#123;</span><br><span class="line">                maxDeno = <span class="built_in">list</span>.get(i).maxdenominations;</span><br><span class="line">                maxIndex = i;</span><br><span class="line">                maxDenoDul = <span class="number">0</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span> (maxDeno == <span class="built_in">list</span>.get(i).maxdenominations) &#123;</span><br><span class="line">                maxDenoDul++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (maxDenoDul==<span class="number">0</span>) &#123;</span><br><span class="line">            System.out.println(require+<span class="string">"("</span>+<span class="built_in">list</span>.get(maxIndex).stamps.size()+<span class="string">"):"</span>+joinString(<span class="built_in">list</span>.get(maxIndex).stamps));</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span> (maxDenoDul&gt;=<span class="number">1</span> &amp;&amp; maxIndex!=-<span class="number">1</span>) &#123;</span><br><span class="line">            System.out.println(require+<span class="string">"("</span>+<span class="built_in">list</span>.get(maxIndex).stamps.size()+<span class="string">"):tie"</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> boolean <span class="title">sortSolutionMaxKinds</span><span class="params">(String require,ArrayList&lt;Solution&gt; <span class="built_in">list</span>)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> maxIndex = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> maxKinds = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> maxKindsDul = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">list</span>.size()==<span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="built_in">list</span>.size(); ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span> (maxKinds &lt; <span class="built_in">list</span>.get(i).kinds) &#123;</span><br><span class="line">                maxKinds = <span class="built_in">list</span>.get(i).kinds;</span><br><span class="line">                maxIndex = i;</span><br><span class="line">                maxKindsDul = <span class="number">0</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span> (maxKinds == <span class="built_in">list</span>.get(i).kinds) &#123;</span><br><span class="line">                maxKindsDul++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//System.out.println("test out -- solutions\n"+list.get(i).stamps);</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (maxKindsDul==<span class="number">0</span>) &#123;</span><br><span class="line">            System.out.println(require+<span class="string">"("</span>+<span class="built_in">list</span>.get(maxIndex).stamps.size()+<span class="string">"):"</span>+joinString(<span class="built_in">list</span>.get(maxIndex).stamps));</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> boolean <span class="title">sortSolutionMinStamps</span><span class="params">(String require,ArrayList&lt;Solution&gt; <span class="built_in">list</span>)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> maxIndex = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> minCount = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> minCountDul = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">list</span>.size()==<span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="built_in">list</span>.size(); ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span> (minCount &lt; <span class="built_in">list</span>.get(i).stamps.size()) &#123;</span><br><span class="line">                minCount = <span class="built_in">list</span>.get(i).stamps.size();</span><br><span class="line">                maxIndex = i;</span><br><span class="line">                minCountDul = <span class="number">0</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span> (minCount == <span class="built_in">list</span>.get(i).maxdenominations) &#123;</span><br><span class="line">                minCountDul++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (minCountDul==<span class="number">0</span>) &#123;</span><br><span class="line">            System.out.println(require+<span class="string">"("</span>+<span class="built_in">list</span>.get(maxIndex).stamps.size()+<span class="string">"):"</span>+joinString(<span class="built_in">list</span>.get(maxIndex).stamps));</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">checkOutDuplicate</span><span class="params">()</span></span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="comment">// String logX,logY="y is empty";</span></span><br><span class="line">        <span class="keyword">int</span> countX = <span class="number">0</span>;<span class="comment">//stamps x have</span></span><br><span class="line">        <span class="keyword">int</span> countY = <span class="number">0</span>;<span class="comment">//stamps y duplicate</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;solList.size(); ++i) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j=solList.size()-<span class="number">1</span>; j&gt;i; --j) &#123;</span><br><span class="line">                <span class="comment">// logX="x-"+i+"\n";</span></span><br><span class="line">                countX = <span class="number">0</span>;</span><br><span class="line">                countY = <span class="number">0</span>;</span><br><span class="line">                Solution x = solList.get(i);</span><br><span class="line">                Solution y = solList.get(j);</span><br><span class="line">                ArrayList&lt;Integer&gt; compare = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> c=<span class="number">0</span>; c&lt;y.stamps.size();++c ) &#123;</span><br><span class="line">                    compare.add(y.stamps.get(c));</span><br><span class="line">                    <span class="comment">// System.out.println(" copy array:"+compare.get(c));</span></span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> k=<span class="number">0</span>;k&lt;x.stamps.size() ;++k ) &#123;</span><br><span class="line">                    <span class="comment">// logX += " "+x.stamps.get(k);</span></span><br><span class="line">                    <span class="keyword">int</span> left = x.stamps.get(k);</span><br><span class="line">                    <span class="keyword">if</span> (x.stamps.get(k)!=<span class="number">0</span>) &#123;</span><br><span class="line">                        countX ++;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="comment">// logY="y-"+i+"\n";</span></span><br><span class="line">                    <span class="keyword">for</span> (<span class="keyword">int</span> l = compare.size()-<span class="number">1</span>; l&gt;=<span class="number">0</span>; --l) &#123;</span><br><span class="line">                        <span class="comment">// logY += " "+compare.get(l);</span></span><br><span class="line">                        <span class="keyword">int</span> right = compare.get(l);</span><br><span class="line">                        <span class="keyword">if</span> (left==right) &#123;</span><br><span class="line">                            countY++;</span><br><span class="line">                            compare.remove(l);</span><br><span class="line">                            <span class="keyword">break</span>;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">// System.out.println(logX+" count:"+countX);</span></span><br><span class="line">                <span class="comment">// System.out.println(logY+" count:"+countY);</span></span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> (countX == countY &amp;&amp; countY != <span class="number">0</span>) &#123;</span><br><span class="line">                    solList.remove(j);</span><br><span class="line">                    i--;</span><br><span class="line">                    <span class="comment">// System.out.println("delete sth");</span></span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">// else&#123;</span></span><br><span class="line">                <span class="comment">//  System.out.println("wei delete x");</span></span><br><span class="line">                <span class="comment">//  System.out.println(x.stamps);</span></span><br><span class="line">                <span class="comment">//  System.out.println("wei delete y");</span></span><br><span class="line">                <span class="comment">//  System.out.println(y.stamps);</span></span><br><span class="line">                <span class="comment">//  System.out.println("wei delete end");</span></span><br><span class="line">                <span class="comment">// &#125;</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
-        
       
     </div>
 
@@ -290,24 +288,32 @@
       
 
       
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/03/09/git-笔记/" rel="next" title="git 笔记">
+                <i class="fa fa-chevron-left"></i> git 笔记
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
 
       
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
 
-  </section>
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
-  </nav>
-
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -315,6 +321,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/03/11/1010-STAMPS/"
+           data-title="1010 STAMPS" data-url="http://yoursite.com/2016/03/11/1010-STAMPS/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -334,8 +348,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/herface.png"
@@ -386,6 +409,23 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
       
 
     </div>
@@ -467,6 +507,167 @@
 
 
   
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
 
   
 

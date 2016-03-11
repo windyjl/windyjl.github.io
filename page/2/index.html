@@ -214,6 +214,101 @@
             
               
                 
+                <a class="post-title-link" href="/2016/03/02/PKU-ACM-1008-Maya-Calendar/" itemprop="url">
+                  PKU ACM 1008 Maya Calendar
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-02T12:20:33+08:00" content="2016-03-02">
+              2016-03-02
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/02/PKU-ACM-1008-Maya-Calendar/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/02/PKU-ACM-1008-Maya-Calendar/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>During his last sabbatical, professor M. A. Ya made a surprising discovery about the old Maya calendar. From an old knotted message, professor discovered that the Maya civilization used a 365 day long year, called Haab, which had 19 months. Each of the first 18 months was 20 days long, and the names of the months were pop, no, zip, zotz, tzec, xul, yoxkin, mol, chen, yax, zac, ceh, mac, kankin, muan, pax, koyab, cumhu. Instead of having names, the days of the months were denoted by numbers starting from 0 to 19. The last month of Haab was called uayet and had 5 days denoted by numbers 0, 1, 2, 3, 4. The Maya believed that this month was unlucky, the court of justice was not in session, the trade stopped, people did not even sweep the floor.<br>For religious purposes, the Maya used another calendar in which the year was called Tzolkin (holly year). The year was divided into thirteen periods, each 20 days long. Each day was denoted by a pair consisting of a number and the name of the day. They used 20 names: imix, ik, akbal, kan, chicchan, cimi, manik, lamat, muluk, ok, chuen, eb, ben, ix, mem, cib, caban, eznab, canac, ahau and 13 numbers; both in cycles.<br>Notice that each day has an unambiguous description. For example, at the beginning of the year the days were described as follows:<br>1 imix, 2 ik, 3 akbal, 4 kan, 5 chicchan, 6 cimi, 7 manik, 8 lamat, 9 muluk, 10 ok, 11 chuen, 12 eb, 13 ben, 1 ix, 2 mem, 3 cib, 4 caban, 5 eznab, 6 canac, 7 ahau, and again in the next period 8 imix, 9 ik, 10 akbal . . .<br>Years (both Haab and Tzolkin) were denoted by numbers 0, 1, : : : , where the number 0 was the beginning of the world. Thus, the first day was:<br>Haab: 0. pop 0<br>Tzolkin: 1 imix 0<br>Help professor M. A. Ya and write a program for him to convert the dates from the Haab calendar to the Tzolkin calendar. </p>
+</blockquote>
+<p>妈呀有两种历法，一种365天，19个月。前20天每天18个月，最后一个月5天。月份用名字，日子用数字。<br>另一种历法类似天朝天干计年，两个东西组合起来，各自管自己涨。<br>输入第一种历法的日期，求出第二种历法的日期。<br>很简单啦，把第一个转换成天数，再取余两次算出日期，除260取整得年份。</p>
+<p>稍微多花了一点时间，忘记字符串对象的==判断是没意义的了，找了一会BUG。骚男你特么要是让老子用个IDE2分钟就能找到。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">import java.util.Scanner;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> Main</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String[] haabs = &#123;<span class="string">"pop"</span> , <span class="string">"no"</span> , <span class="string">"zip"</span> , <span class="string">"zotz"</span> , <span class="string">"tzec"</span> , <span class="string">"xul"</span> , <span class="string">"yoxkin"</span> , <span class="string">"mol"</span> , <span class="string">"chen"</span> , <span class="string">"yax"</span> , <span class="string">"zac"</span> , <span class="string">"ceh"</span> , <span class="string">"mac"</span> , <span class="string">"kankin"</span> , <span class="string">"muan"</span> , <span class="string">"pax"</span> , <span class="string">"koyab"</span> , <span class="string">"cumhu"</span> , <span class="string">"uayet"</span>&#125;;  </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String[] tzolkin = &#123;<span class="string">"imix"</span>, <span class="string">"ik"</span>, <span class="string">"akbal"</span>, <span class="string">"kan"</span>, <span class="string">"chicchan"</span>, <span class="string">"cimi"</span>, <span class="string">"manik"</span>, <span class="string">"lamat"</span>, <span class="string">"muluk"</span>, <span class="string">"ok"</span>, <span class="string">"chuen"</span>, <span class="string">"eb"</span>, <span class="string">"ben"</span>, <span class="string">"ix"</span>, <span class="string">"mem"</span>, <span class="string">"cib"</span>, <span class="string">"caban"</span>, <span class="string">"eznab"</span>, <span class="string">"canac"</span>, <span class="string">"ahau"</span>&#125;;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String monthName;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> month = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> days = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Scanner in = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> times = in.nextInt();</span><br><span class="line">        System.out.println(times);</span><br><span class="line">        String calendarHaab;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;times; i++) &#123;</span><br><span class="line">            calendarHaab = in.next();</span><br><span class="line">            getDays(calendarHaab);</span><br><span class="line">            PrintTzolkin();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">getDays</span><span class="params">(String _str)</span></span><br><span class="line">    </span>&#123;</span><br><span class="line">        days = <span class="number">0</span>;</span><br><span class="line">        monthName = in.next();</span><br><span class="line">        <span class="keyword">for</span> (month=<span class="number">0</span>;month&lt;haabs.length ;++month ) &#123;</span><br><span class="line">            <span class="keyword">if</span> (monthName.equals(haabs[month])) &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> years = in.nextInt();</span><br><span class="line">        days += years * <span class="number">365</span>;</span><br><span class="line">        days += month*<span class="number">20</span>;</span><br><span class="line">        days += java.lang.Integer.parseInt(_str.substring(<span class="number">0</span>,_str.length()-<span class="number">1</span>));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">PrintTzolkin</span><span class="params">()</span></span><br><span class="line">    </span>&#123;</span><br><span class="line">        System.out.println((days%<span class="number">13</span>+<span class="number">1</span>)+<span class="string">" "</span>+tzolkin[days%<span class="number">20</span>]+<span class="string">" "</span>+(days/<span class="number">260</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/03/01/PKU-ACM-1007-DNA-Sorting/" itemprop="url">
                   PKU ACM 1007 DNA Sorting
                 </a>
@@ -589,105 +684,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/02/27/hello-world/" itemprop="url">
-                  Hello World
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-27T16:39:43+08:00" content="2016-02-27">
-              2016-02-27
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/02/27/hello-world/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/27/hello-world/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-          
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -734,7 +730,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-count">12</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
