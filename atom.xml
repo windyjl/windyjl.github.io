@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-03-14T08:06:31.194Z</updated>
+  <updated>2016-03-14T08:33:27.174Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2016/03/12/PKU-ACM-1011-Sticks/"/>
     <id>http://yoursite.com/2016/03/12/PKU-ACM-1011-Sticks/</id>
     <published>2016-03-12T01:57:42.000Z</published>
-    <updated>2016-03-14T08:06:31.194Z</updated>
+    <updated>2016-03-14T08:33:27.174Z</updated>
     
     <content type="html">&lt;p&gt;逗比乔治撸了几个长度一样的管。不小心撸断了，碎成好几段。现在要从碎掉的几段里，推测原本管子长度最短可能是多少。&lt;br&gt;简单说就说很富杂的东西。&lt;br&gt;可以穷举搞定，有几个地方能优化。&lt;/p&gt;
 &lt;ol&gt;
@@ -49,6 +49,7 @@
     综上，在同一次遍历中，只需要随便一跟都是对的。但如果手上已经拿这一根，但找不出答案，那可能是第二个根拿错了。
 &lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;坑自己&quot;&gt;&lt;a href=&quot;#坑自己&quot; class=&quot;headerlink&quot; title=&quot;坑自己&quot;&gt;&lt;/a&gt;坑自己&lt;/h2&gt;&lt;p&gt;之前在一份C语言的参考代码中看用while跳过重复数据的写法，在学习过程中写错，对每次跳过都写了一次赋值，消耗的量比较大。&lt;br&gt;在最后的优化中，考虑到每次遍历记录skip下标的赋值操作是不是也会很耗，于是写了个while式的。其实没什么卵用，用64个的那组数据测试比原来写法平均长200ms。&lt;br&gt;这里的原因是仍然是数量级问题，因为之前写错的时候是在一次搜索里赋值好几次。而skip的方式同样是一个判断，一个赋值，甚至不用考虑 &lt;strong&gt;下标越界&lt;/strong&gt;。&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;/files/pku1011.java&quot;&gt;我的代码&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;/files/TestData_SoManyLine.txt&quot;&gt;测试数据·行数多&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;/files/TestDataAnser_SoManyLine.txt&quot;&gt;测试数据答案·行数多&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;/files/TestData_64input.txt&quot;&gt;测试数据·长度长&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;/files/herface.png&quot;&gt;测试数据答案·长度长&lt;/a&gt;454&lt;/p&gt;
+&lt;p&gt;参考代码&lt;br&gt;&lt;a href=&quot;http://poj.org/showmessage?message_id=348052&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;DPS C&lt;/a&gt;&lt;br&gt;C中，对重复数据的跳过用了while判断，但最后一位越界没做处理。&lt;br&gt;&lt;a href=&quot;http://poj.org/showmessage?message_id=172596&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Java&lt;/a&gt;&lt;br&gt;这个就是我对了半天，发现效率不一样，才知道他们是降序的源头XP&lt;/p&gt;
 </content>
     
     <summary type="html">

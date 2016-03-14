@@ -77,7 +77,7 @@
 **坑点**
 . 验证数组中的组合能满足猜测的长度。需要尝试多种长度，多种方式的组合
 . 递归结果的返回，有很多种解，都要尝试。会出现用掉别人的parts导致">
-<meta property="og:updated_time" content="2016-03-14T08:06:31.194Z">
+<meta property="og:updated_time" content="2016-03-14T08:33:27.174Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PKU ACM 1011 Sticks">
 <meta name="twitter:description" content="逗比乔治撸了几个长度一样的管。不小心撸断了，碎成好几段。现在要从碎掉的几段里，推测原本管子长度最短可能是多少。简单说就说很富杂的东西。可以穷举搞定，有几个地方能优化。
@@ -296,6 +296,7 @@
     综上，在同一次遍历中，只需要随便一跟都是对的。但如果手上已经拿这一根，但找不出答案，那可能是第二个根拿错了。
 </code></pre><h2 id="坑自己"><a href="#坑自己" class="headerlink" title="坑自己"></a>坑自己</h2><p>之前在一份C语言的参考代码中看用while跳过重复数据的写法，在学习过程中写错，对每次跳过都写了一次赋值，消耗的量比较大。<br>在最后的优化中，考虑到每次遍历记录skip下标的赋值操作是不是也会很耗，于是写了个while式的。其实没什么卵用，用64个的那组数据测试比原来写法平均长200ms。<br>这里的原因是仍然是数量级问题，因为之前写错的时候是在一次搜索里赋值好几次。而skip的方式同样是一个判断，一个赋值，甚至不用考虑 <strong>下标越界</strong>。</p>
 <p><a href="/files/pku1011.java">我的代码</a><br><a href="/files/TestData_SoManyLine.txt">测试数据·行数多</a><br><a href="/files/TestDataAnser_SoManyLine.txt">测试数据答案·行数多</a><br><a href="/files/TestData_64input.txt">测试数据·长度长</a><br><a href="/files/herface.png">测试数据答案·长度长</a>454</p>
+<p>参考代码<br><a href="http://poj.org/showmessage?message_id=348052" target="_blank" rel="external">DPS C</a><br>C中，对重复数据的跳过用了while判断，但最后一位越界没做处理。<br><a href="http://poj.org/showmessage?message_id=172596" target="_blank" rel="external">Java</a><br>这个就是我对了半天，发现效率不一样，才知道他们是降序的源头XP</p>
 
       
     </div>
