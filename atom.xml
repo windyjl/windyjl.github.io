@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-03-11T10:31:22.675Z</updated>
+  <updated>2016-03-14T08:03:35.099Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,58 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>1011 Sticks</title>
+    <link href="http://yoursite.com/2016/03/12/1011-Sticks/"/>
+    <id>http://yoursite.com/2016/03/12/1011-Sticks/</id>
+    <published>2016-03-12T01:57:42.000Z</published>
+    <updated>2016-03-14T08:03:35.099Z</updated>
+    
+    <content type="html">&lt;p&gt;逗比乔治撸了几个长度一样的管。不小心撸断了，碎成好几段。现在要从碎掉的几段里，推测原本管子长度最短可能是多少。&lt;br&gt;简单说就说很富杂的东西。&lt;br&gt;可以穷举搞定，有几个地方能优化。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;最长的碎片，说明原始长度不可能比他短。&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;碎片总和，原始长度不会比他长。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;**坑点**
+. 验证数组中的组合能满足猜测的长度。需要尝试多种长度，多种方式的组合
+. 递归结果的返回，有很多种解，都要尝试。会出现用掉别人的parts导致加不出的情况。
+2016年3月12日12点36分43秒
+看了会片回来，觉得有三层递归。
+最底层，寻找满足求和方式的组合
+每种不同的求和方式，都要开一条线检测后续能否继续剪完
+最上，尝试各种长度
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;经过一番挣扎，我的做法还是在空间和时间复杂度上都极其不优雅。虽然题目只报了超时，但估计内存也会超。&lt;br&gt;查看别人的代码后总结如下优化点&lt;/p&gt;
+&lt;h2 id=&quot;寻找求和组合的方式&quot;&gt;&lt;a href=&quot;#寻找求和组合的方式&quot; class=&quot;headerlink&quot; title=&quot;寻找求和组合的方式&quot;&gt;&lt;/a&gt;寻找求和组合的方式&lt;/h2&gt;&lt;p&gt;我很傻的使用了独立数组去存储每种求和方式，然后把数组返回过来，再遍历一次这个数组从总sticks里去掉重复项。&lt;br&gt;参考的代码只用了一个数组，标记true/false，true表示用过，false没有。进行下一层递归前把用掉的数字设true，反正递归结束发现这个做法不行时会设会false。&lt;/p&gt;
+&lt;h2 id=&quot;完成一个长度的验证&quot;&gt;&lt;a href=&quot;#完成一个长度的验证&quot; class=&quot;headerlink&quot; title=&quot;完成一个长度的验证&quot;&gt;&lt;/a&gt;完成一个长度的验证&lt;/h2&gt;&lt;p&gt;原本我是检查是否所用sticks都用过，然而如果没次都检测所有的格子是否是true，那又是一个n^2以上。&lt;br&gt;参考的算法里，通过设定单个长度，和总长相除获得了全根数。只要每次找到一种合适的加法，把已找到的根数+1就可以判断是否完成人物。&lt;/p&gt;
+&lt;h2 id=&quot;已知组合的搜索跳过&quot;&gt;&lt;a href=&quot;#已知组合的搜索跳过&quot; class=&quot;headerlink&quot; title=&quot;已知组合的搜索跳过&quot;&gt;&lt;/a&gt;已知组合的搜索跳过&lt;/h2&gt;&lt;p&gt;在求和检测中，一次for循环里，如果当前数字无解，那么相同数字在当前遍历中也是无解的。&lt;br&gt;本来相对这个优化举一反三，让这次遍历中，对相同的数字全部跳过。&lt;/p&gt;
+&lt;h3 id=&quot;建立跳过表&quot;&gt;&lt;a href=&quot;#建立跳过表&quot; class=&quot;headerlink&quot; title=&quot;建立跳过表&quot;&gt;&lt;/a&gt;建立跳过表&lt;/h3&gt;&lt;p&gt;与标记是否使用过的表格一样，当检查到无法使用的数字时：从当前位置开始向后，把值设为true。同一次遍历中，不再检测相同的数字。&lt;br&gt;但下一次递归中就要重置，因为状态变化了，所以一张表只在一次遍历中有用。那么就会造成更大的空间复杂度。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;其实这个问题已经在排序中解决过了。
+&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&quot;最后使用的方法&quot;&gt;&lt;a href=&quot;#最后使用的方法&quot; class=&quot;headerlink&quot; title=&quot;最后使用的方法&quot;&gt;&lt;/a&gt;最后使用的方法&lt;/h1&gt;&lt;p&gt;在查阅资料后，注意到几点&lt;br&gt;· 数据用降序排列效率更高   &lt;em&gt;从头几支的搜索来分析，先搜索大的数可以减少深度。具体并不清楚。&lt;/em&gt;&lt;br&gt;· 基于降序排列，原本升序数组可以在==判断后剪枝的内容不可行。&amp;gt;的情况同理    &lt;em&gt;原来下一位会比现在大，永远不满足判断条件。&lt;/em&gt;&lt;br&gt;· &lt;strong&gt;如果搜索中没有找到结果，也要把总长输出来（只有一根的情况）&lt;/strong&gt;&lt;br&gt;· _sum，就是当&amp;lt;情况时传递的参数。如果两个判断之后 _sum==0，就跳过后续的遍历。为什么呢？它象征的是空手开始找线索。他从两种意义上来说都是必然有结果的。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;1. 一根棒子必然属于正确解的一部分。（这样理解容易产生误差，并不排除因为组合问题导致一根棍子找不到配对的情况）
+2. 因为列表中的每一项都是解的一部分，从哪一只都应该能找到正确解。所以正确的来说只需要一个起点，并走到底。
+
+    综上，在同一次遍历中，只需要随便一跟都是对的。但如果手上已经拿这一根，但找不出答案，那可能是第二个根拿错了。
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;坑自己&quot;&gt;&lt;a href=&quot;#坑自己&quot; class=&quot;headerlink&quot; title=&quot;坑自己&quot;&gt;&lt;/a&gt;坑自己&lt;/h2&gt;&lt;p&gt;之前在一份C语言的参考代码中看用while跳过重复数据的写法，在学习过程中写错，对每次跳过都写了一次赋值，消耗的量比较大。&lt;br&gt;在最后的优化中，考虑到每次遍历记录skip下标的赋值操作是不是也会很耗，于是写了个while式的。其实没什么卵用，用64个的那组数据测试比原来写法平均长200ms。&lt;br&gt;这里的原因是仍然是数量级问题，因为之前写错的时候是在一次搜索里赋值好几次。而skip的方式同样是一个判断，一个赋值，甚至不用考虑 &lt;strong&gt;下标越界&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;/files/pku1011.java&quot;&gt;我的代码&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;/files/TestData_SoManyLine.txt&quot;&gt;测试数据·行数多&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;/files/TestDataAnser_SoManyLine.txt&quot;&gt;测试数据答案·行数多&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;/files/TestData_64input.txt&quot;&gt;测试数据·长度长&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;/files/herface.png&quot;&gt;测试数据答案·长度长&lt;/a&gt;454&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;逗比乔治撸了几个长度一样的管。不小心撸断了，碎成好几段。现在要从碎掉的几段里，推测原本管子长度最短可能是多少。&lt;br&gt;简单说就说很富杂的东西。&lt;br&gt;可以穷举搞定，有几个地方能优化。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;最长的碎片，说明原始长度不可能比他短。&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;
+    
+    </summary>
+    
+    
+      <category term="ACM" scheme="http://yoursite.com/tags/ACM/"/>
+    
+      <category term="PKU" scheme="http://yoursite.com/tags/PKU/"/>
+    
+  </entry>
   
   <entry>
     <title>3125 Printer Queue</title>

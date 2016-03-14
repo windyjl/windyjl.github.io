@@ -59,16 +59,34 @@
 
 
 
-<meta name="description" content="During his last sabbatical, professor M. A. Ya made a surprising discovery about the old Maya calendar. From an old knotted message, professor discovered that the Maya civilization used a 365 day long">
+<meta name="description" content="逗比乔治撸了几个长度一样的管。不小心撸断了，碎成好几段。现在要从碎掉的几段里，推测原本管子长度最短可能是多少。简单说就说很富杂的东西。可以穷举搞定，有几个地方能优化。
+
+最长的碎片，说明原始长度不可能比他短。
+碎片总和，原始长度不会比他长。
+**坑点**
+. 验证数组中的组合能满足猜测的长度。需要尝试多种长度，多种方式的组合
+. 递归结果的返回，有很多种解，都要尝试。会出现用掉别人的parts导致">
 <meta property="og:type" content="article">
-<meta property="og:title" content="PKU ACM 1008 Maya Calendar">
-<meta property="og:url" content="http://yoursite.com/2016/03/02/PKU-ACM-1008-Maya-Calendar/index.html">
+<meta property="og:title" content="1011 Sticks">
+<meta property="og:url" content="http://yoursite.com/2016/03/12/1011-Sticks/index.html">
 <meta property="og:site_name" content="StrikePhoenix">
-<meta property="og:description" content="During his last sabbatical, professor M. A. Ya made a surprising discovery about the old Maya calendar. From an old knotted message, professor discovered that the Maya civilization used a 365 day long">
-<meta property="og:updated_time" content="2016-03-02T04:25:17.091Z">
+<meta property="og:description" content="逗比乔治撸了几个长度一样的管。不小心撸断了，碎成好几段。现在要从碎掉的几段里，推测原本管子长度最短可能是多少。简单说就说很富杂的东西。可以穷举搞定，有几个地方能优化。
+
+最长的碎片，说明原始长度不可能比他短。
+碎片总和，原始长度不会比他长。
+**坑点**
+. 验证数组中的组合能满足猜测的长度。需要尝试多种长度，多种方式的组合
+. 递归结果的返回，有很多种解，都要尝试。会出现用掉别人的parts导致">
+<meta property="og:updated_time" content="2016-03-14T08:03:35.099Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="PKU ACM 1008 Maya Calendar">
-<meta name="twitter:description" content="During his last sabbatical, professor M. A. Ya made a surprising discovery about the old Maya calendar. From an old knotted message, professor discovered that the Maya civilization used a 365 day long">
+<meta name="twitter:title" content="1011 Sticks">
+<meta name="twitter:description" content="逗比乔治撸了几个长度一样的管。不小心撸断了，碎成好几段。现在要从碎掉的几段里，推测原本管子长度最短可能是多少。简单说就说很富杂的东西。可以穷举搞定，有几个地方能优化。
+
+最长的碎片，说明原始长度不可能比他短。
+碎片总和，原始长度不会比他长。
+**坑点**
+. 验证数组中的组合能满足猜测的长度。需要尝试多种长度，多种方式的组合
+. 递归结果的返回，有很多种解，都要尝试。会出现用掉别人的parts导致">
 
 
 
@@ -86,7 +104,7 @@
   };
 </script>
 
-  <title> PKU ACM 1008 Maya Calendar | StrikePhoenix </title>
+  <title> 1011 Sticks | StrikePhoenix </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -206,7 +224,7 @@
             
             
               
-                PKU ACM 1008 Maya Calendar
+                1011 Sticks
               
             
           </h1>
@@ -218,8 +236,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-02T12:20:33+08:00" content="2016-03-02">
-              2016-03-02
+            <time itemprop="dateCreated" datetime="2016-03-12T09:57:42+08:00" content="2016-03-12">
+              2016-03-12
             </time>
           </span>
 
@@ -229,8 +247,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/03/02/PKU-ACM-1008-Maya-Calendar/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/02/PKU-ACM-1008-Maya-Calendar/" itemprop="commentsCount"></span>
+                <a href="/2016/03/12/1011-Sticks/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/12/1011-Sticks/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -251,12 +269,34 @@
       
 
       
-        <blockquote>
-<p>During his last sabbatical, professor M. A. Ya made a surprising discovery about the old Maya calendar. From an old knotted message, professor discovered that the Maya civilization used a 365 day long year, called Haab, which had 19 months. Each of the first 18 months was 20 days long, and the names of the months were pop, no, zip, zotz, tzec, xul, yoxkin, mol, chen, yax, zac, ceh, mac, kankin, muan, pax, koyab, cumhu. Instead of having names, the days of the months were denoted by numbers starting from 0 to 19. The last month of Haab was called uayet and had 5 days denoted by numbers 0, 1, 2, 3, 4. The Maya believed that this month was unlucky, the court of justice was not in session, the trade stopped, people did not even sweep the floor.<br>For religious purposes, the Maya used another calendar in which the year was called Tzolkin (holly year). The year was divided into thirteen periods, each 20 days long. Each day was denoted by a pair consisting of a number and the name of the day. They used 20 names: imix, ik, akbal, kan, chicchan, cimi, manik, lamat, muluk, ok, chuen, eb, ben, ix, mem, cib, caban, eznab, canac, ahau and 13 numbers; both in cycles.<br>Notice that each day has an unambiguous description. For example, at the beginning of the year the days were described as follows:<br>1 imix, 2 ik, 3 akbal, 4 kan, 5 chicchan, 6 cimi, 7 manik, 8 lamat, 9 muluk, 10 ok, 11 chuen, 12 eb, 13 ben, 1 ix, 2 mem, 3 cib, 4 caban, 5 eznab, 6 canac, 7 ahau, and again in the next period 8 imix, 9 ik, 10 akbal . . .<br>Years (both Haab and Tzolkin) were denoted by numbers 0, 1, : : : , where the number 0 was the beginning of the world. Thus, the first day was:<br>Haab: 0. pop 0<br>Tzolkin: 1 imix 0<br>Help professor M. A. Ya and write a program for him to convert the dates from the Haab calendar to the Tzolkin calendar. </p>
-</blockquote>
-<p>妈呀有两种历法，一种365天，19个月。前20天每天18个月，最后一个月5天。月份用名字，日子用数字。<br>另一种历法类似天朝天干计年，两个东西组合起来，各自管自己涨。<br>输入第一种历法的日期，求出第二种历法的日期。<br>很简单啦，把第一个转换成天数，再取余两次算出日期，除260取整得年份。</p>
-<p>稍微多花了一点时间，忘记字符串对象的==判断是没意义的了，找了一会BUG。骚男你特么要是让老子用个IDE2分钟就能找到。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">import java.util.Scanner;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> Main</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String[] haabs = &#123;<span class="string">"pop"</span> , <span class="string">"no"</span> , <span class="string">"zip"</span> , <span class="string">"zotz"</span> , <span class="string">"tzec"</span> , <span class="string">"xul"</span> , <span class="string">"yoxkin"</span> , <span class="string">"mol"</span> , <span class="string">"chen"</span> , <span class="string">"yax"</span> , <span class="string">"zac"</span> , <span class="string">"ceh"</span> , <span class="string">"mac"</span> , <span class="string">"kankin"</span> , <span class="string">"muan"</span> , <span class="string">"pax"</span> , <span class="string">"koyab"</span> , <span class="string">"cumhu"</span> , <span class="string">"uayet"</span>&#125;;  </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String[] tzolkin = &#123;<span class="string">"imix"</span>, <span class="string">"ik"</span>, <span class="string">"akbal"</span>, <span class="string">"kan"</span>, <span class="string">"chicchan"</span>, <span class="string">"cimi"</span>, <span class="string">"manik"</span>, <span class="string">"lamat"</span>, <span class="string">"muluk"</span>, <span class="string">"ok"</span>, <span class="string">"chuen"</span>, <span class="string">"eb"</span>, <span class="string">"ben"</span>, <span class="string">"ix"</span>, <span class="string">"mem"</span>, <span class="string">"cib"</span>, <span class="string">"caban"</span>, <span class="string">"eznab"</span>, <span class="string">"canac"</span>, <span class="string">"ahau"</span>&#125;;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String monthName;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> month = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> days = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Scanner in = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> times = in.nextInt();</span><br><span class="line">        System.out.println(times);</span><br><span class="line">        String calendarHaab;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;times; i++) &#123;</span><br><span class="line">            calendarHaab = in.next();</span><br><span class="line">            getDays(calendarHaab);</span><br><span class="line">            PrintTzolkin();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">getDays</span><span class="params">(String _str)</span></span><br><span class="line">    </span>&#123;</span><br><span class="line">        days = <span class="number">0</span>;</span><br><span class="line">        monthName = in.next();</span><br><span class="line">        <span class="keyword">for</span> (month=<span class="number">0</span>;month&lt;haabs.length ;++month ) &#123;</span><br><span class="line">            <span class="keyword">if</span> (monthName.equals(haabs[month])) &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> years = in.nextInt();</span><br><span class="line">        days += years * <span class="number">365</span>;</span><br><span class="line">        days += month*<span class="number">20</span>;</span><br><span class="line">        days += java.lang.Integer.parseInt(_str.substring(<span class="number">0</span>,_str.length()-<span class="number">1</span>));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">PrintTzolkin</span><span class="params">()</span></span><br><span class="line">    </span>&#123;</span><br><span class="line">        System.out.println((days%<span class="number">13</span>+<span class="number">1</span>)+<span class="string">" "</span>+tzolkin[days%<span class="number">20</span>]+<span class="string">" "</span>+(days/<span class="number">260</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <p>逗比乔治撸了几个长度一样的管。不小心撸断了，碎成好几段。现在要从碎掉的几段里，推测原本管子长度最短可能是多少。<br>简单说就说很富杂的东西。<br>可以穷举搞定，有几个地方能优化。</p>
+<ol>
+<li>最长的碎片，说明原始长度不可能比他短。</li>
+<li><p>碎片总和，原始长度不会比他长。</p>
+<pre><code>**坑点**
+. 验证数组中的组合能满足猜测的长度。需要尝试多种长度，多种方式的组合
+. 递归结果的返回，有很多种解，都要尝试。会出现用掉别人的parts导致加不出的情况。
+2016年3月12日12点36分43秒
+看了会片回来，觉得有三层递归。
+最底层，寻找满足求和方式的组合
+每种不同的求和方式，都要开一条线检测后续能否继续剪完
+最上，尝试各种长度
+</code></pre></li>
+</ol>
+<p>经过一番挣扎，我的做法还是在空间和时间复杂度上都极其不优雅。虽然题目只报了超时，但估计内存也会超。<br>查看别人的代码后总结如下优化点</p>
+<h2 id="寻找求和组合的方式"><a href="#寻找求和组合的方式" class="headerlink" title="寻找求和组合的方式"></a>寻找求和组合的方式</h2><p>我很傻的使用了独立数组去存储每种求和方式，然后把数组返回过来，再遍历一次这个数组从总sticks里去掉重复项。<br>参考的代码只用了一个数组，标记true/false，true表示用过，false没有。进行下一层递归前把用掉的数字设true，反正递归结束发现这个做法不行时会设会false。</p>
+<h2 id="完成一个长度的验证"><a href="#完成一个长度的验证" class="headerlink" title="完成一个长度的验证"></a>完成一个长度的验证</h2><p>原本我是检查是否所用sticks都用过，然而如果没次都检测所有的格子是否是true，那又是一个n^2以上。<br>参考的算法里，通过设定单个长度，和总长相除获得了全根数。只要每次找到一种合适的加法，把已找到的根数+1就可以判断是否完成人物。</p>
+<h2 id="已知组合的搜索跳过"><a href="#已知组合的搜索跳过" class="headerlink" title="已知组合的搜索跳过"></a>已知组合的搜索跳过</h2><p>在求和检测中，一次for循环里，如果当前数字无解，那么相同数字在当前遍历中也是无解的。<br>本来相对这个优化举一反三，让这次遍历中，对相同的数字全部跳过。</p>
+<h3 id="建立跳过表"><a href="#建立跳过表" class="headerlink" title="建立跳过表"></a>建立跳过表</h3><p>与标记是否使用过的表格一样，当检查到无法使用的数字时：从当前位置开始向后，把值设为true。同一次遍历中，不再检测相同的数字。<br>但下一次递归中就要重置，因为状态变化了，所以一张表只在一次遍历中有用。那么就会造成更大的空间复杂度。</p>
+<pre><code>其实这个问题已经在排序中解决过了。
+</code></pre><h1 id="最后使用的方法"><a href="#最后使用的方法" class="headerlink" title="最后使用的方法"></a>最后使用的方法</h1><p>在查阅资料后，注意到几点<br>· 数据用降序排列效率更高   <em>从头几支的搜索来分析，先搜索大的数可以减少深度。具体并不清楚。</em><br>· 基于降序排列，原本升序数组可以在==判断后剪枝的内容不可行。&gt;的情况同理    <em>原来下一位会比现在大，永远不满足判断条件。</em><br>· <strong>如果搜索中没有找到结果，也要把总长输出来（只有一根的情况）</strong><br>· _sum，就是当&lt;情况时传递的参数。如果两个判断之后 _sum==0，就跳过后续的遍历。为什么呢？它象征的是空手开始找线索。他从两种意义上来说都是必然有结果的。</p>
+<pre><code>1. 一根棒子必然属于正确解的一部分。（这样理解容易产生误差，并不排除因为组合问题导致一根棍子找不到配对的情况）
+2. 因为列表中的每一项都是解的一部分，从哪一只都应该能找到正确解。所以正确的来说只需要一个起点，并走到底。
+
+    综上，在同一次遍历中，只需要随便一跟都是对的。但如果手上已经拿这一根，但找不出答案，那可能是第二个根拿错了。
+</code></pre><h2 id="坑自己"><a href="#坑自己" class="headerlink" title="坑自己"></a>坑自己</h2><p>之前在一份C语言的参考代码中看用while跳过重复数据的写法，在学习过程中写错，对每次跳过都写了一次赋值，消耗的量比较大。<br>在最后的优化中，考虑到每次遍历记录skip下标的赋值操作是不是也会很耗，于是写了个while式的。其实没什么卵用，用64个的那组数据测试比原来写法平均长200ms。<br>这里的原因是仍然是数量级问题，因为之前写错的时候是在一次搜索里赋值好几次。而skip的方式同样是一个判断，一个赋值，甚至不用考虑 <strong>下标越界</strong>。</p>
+<p><a href="/files/pku1011.java">我的代码</a><br><a href="/files/TestData_SoManyLine.txt">测试数据·行数多</a><br><a href="/files/TestDataAnser_SoManyLine.txt">测试数据答案·行数多</a><br><a href="/files/TestData_64input.txt">测试数据·长度长</a><br><a href="/files/herface.png">测试数据答案·长度长</a>454</p>
+
       
     </div>
 
@@ -275,17 +315,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/03/01/PKU-ACM-1007-DNA-Sorting/" rel="next" title="PKU ACM 1007 DNA Sorting">
-                <i class="fa fa-chevron-left"></i> PKU ACM 1007 DNA Sorting
+              <a href="/2016/03/11/3125-Printer-Queue/" rel="next" title="3125 Printer Queue">
+                <i class="fa fa-chevron-left"></i> 3125 Printer Queue
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/03/02/VS自动补全-设置/" rel="prev" title="VS自动补全 设置">
-                VS自动补全 设置 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -311,8 +347,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/03/02/PKU-ACM-1008-Maya-Calendar/"
-           data-title="PKU ACM 1008 Maya Calendar" data-url="http://yoursite.com/2016/03/02/PKU-ACM-1008-Maya-Calendar/">
+      <div class="ds-thread" data-thread-key="2016/03/12/1011-Sticks/"
+           data-title="1011 Sticks" data-url="http://yoursite.com/2016/03/12/1011-Sticks/">
       </div>
     
   </div>
@@ -407,7 +443,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#寻找求和组合的方式"><span class="nav-number">1.</span> <span class="nav-text">寻找求和组合的方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#完成一个长度的验证"><span class="nav-number">2.</span> <span class="nav-text">完成一个长度的验证</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#已知组合的搜索跳过"><span class="nav-number">3.</span> <span class="nav-text">已知组合的搜索跳过</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#建立跳过表"><span class="nav-number">3.1.</span> <span class="nav-text">建立跳过表</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#最后使用的方法"><span class="nav-number"></span> <span class="nav-text">最后使用的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#坑自己"><span class="nav-number">1.</span> <span class="nav-text">坑自己</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
