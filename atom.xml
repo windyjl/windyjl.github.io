@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-03-14T08:33:27.174Z</updated>
+  <updated>2016-03-15T10:03:37.024Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,78 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>GlobalGamejam 2014 这边！这边！（This Ways）</title>
+    <link href="http://yoursite.com/2016/03/15/GlobalGamejam-2014-%E8%BF%99%E8%BE%B9%EF%BC%81%E8%BF%99%E8%BE%B9%EF%BC%81%EF%BC%88This-Ways%EF%BC%89/"/>
+    <id>http://yoursite.com/2016/03/15/GlobalGamejam-2014-这边！这边！（This-Ways）/</id>
+    <published>2016-03-15T07:30:02.000Z</published>
+    <updated>2016-03-15T10:03:37.024Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;小伙伴&quot;&gt;&lt;a href=&quot;#小伙伴&quot; class=&quot;headerlink&quot; title=&quot;小伙伴&quot;&gt;&lt;/a&gt;小伙伴&lt;/h1&gt;&lt;p&gt;程序：upupzealot(独立游戏吧主)&lt;br&gt;美术：廖毅（《汐》作者）、seedsman&lt;br&gt;关卡策划：穆风（本人）&lt;/p&gt;
+&lt;h1 id=&quot;游戏简介&quot;&gt;&lt;a href=&quot;#游戏简介&quot; class=&quot;headerlink&quot; title=&quot;游戏简介&quot;&gt;&lt;/a&gt;游戏简介&lt;/h1&gt;&lt;h2 id=&quot;寓意&quot;&gt;&lt;a href=&quot;#寓意&quot; class=&quot;headerlink&quot; title=&quot;寓意&quot;&gt;&lt;/a&gt;寓意&lt;/h2&gt;&lt;p&gt;主人公所遇到的困境会是目前的他没有办法解决的，但只要你一直走不回头，世界会给你让出一条路。&lt;/p&gt;
+&lt;h2 id=&quot;特色&quot;&gt;&lt;a href=&quot;#特色&quot; class=&quot;headerlink&quot; title=&quot;特色&quot;&gt;&lt;/a&gt;特色&lt;/h2&gt;&lt;p&gt;在烂大街的横版跳台基础上，加上了不太烂大街的4方向重力转换，以及独创的&lt;strong&gt;第5重力方向（垂直于屏幕，就是推箱子）&lt;/strong&gt;与&lt;strong&gt;世界线（第5重力于4向重力切换）&lt;/strong&gt;。&lt;br&gt;游戏中同时包含操作难度和解密难度。如图1中，推箱子重力下地面的尖刺无法通过，需要推动箱子来盖住尖刺。又如图2中，跳台中的尖刺有很微妙的碰撞判断，需要精密的操作来通过。&lt;br&gt;&lt;img src=&quot;/images/ggj2014/this way pushbox.jpg&quot; alt=&quot;平面视角&quot;&gt;&lt;/p&gt;
+&lt;center&gt;图1&lt;/center&gt;&lt;br&gt;&lt;img src=&quot;/images/ggj2014/this way jump.jpg&quot; alt=&quot;跳台视角&quot;&gt;&lt;br&gt;&lt;center&gt;图2&lt;/center&gt;
+
+&lt;h1 id=&quot;制作总结&quot;&gt;&lt;a href=&quot;#制作总结&quot; class=&quot;headerlink&quot; title=&quot;制作总结&quot;&gt;&lt;/a&gt;制作总结&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;Theme&amp;quot;We don&amp;apos;t see things as they are, we see them as we are.&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;想只靠游戏的玩法方式来体现主题很有难度。那是个人第一次参加Gamejam，发觉大家对主题的表达都不是很好，大多都是靠演示的人来口头总结，并没有通过游戏体验到。&lt;br&gt;以自己小队的作品来说，我们提出了多方向来解决难题，这是玩法上的。但寓意上，“金城所致金石为开”的意思完全没有出来。&lt;br&gt;真的要表达这个效果的话，恐怕使用文字描述比玩法展示要好得多。&lt;br&gt;以大神级游戏《Braid》来说，&lt;strong&gt;它的做法是用文字叙述了简单的故事，在略显单薄的故事里抽取几个意象放到玩法里。用这几个意象作为路标，把玩法和故事串联起来。&lt;/strong&gt;&lt;br&gt;另外，第一次gamejam认识的朋友非常给力。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;小伙伴&quot;&gt;&lt;a href=&quot;#小伙伴&quot; class=&quot;headerlink&quot; title=&quot;小伙伴&quot;&gt;&lt;/a&gt;小伙伴&lt;/h1&gt;&lt;p&gt;程序：upupzealot(独立游戏吧主)&lt;br&gt;美术：廖毅（《汐》作者）、seedsman&lt;br&gt;关卡策划：穆风（本人）&lt;/p&gt;
+
+    
+    </summary>
+    
+    
+      <category term="GlobalGamejam" scheme="http://yoursite.com/tags/GlobalGamejam/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>GlobalGamejam 2016 救赎圣经）（Redemption Bible）</title>
+    <link href="http://yoursite.com/2016/03/15/GlobalGamejam-2016-%E6%95%91%E8%B5%8E%E5%9C%A3%E7%BB%8F%EF%BC%89%EF%BC%88Redemption-Bible%EF%BC%89/"/>
+    <id>http://yoursite.com/2016/03/15/GlobalGamejam-2016-救赎圣经）（Redemption-Bible）/</id>
+    <published>2016-03-15T07:29:09.000Z</published>
+    <updated>2016-03-15T10:16:01.123Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;小伙伴&quot;&gt;&lt;a href=&quot;#小伙伴&quot; class=&quot;headerlink&quot; title=&quot;小伙伴&quot;&gt;&lt;/a&gt;小伙伴&lt;/h1&gt;&lt;p&gt;程序：sommily、刘城&lt;br&gt;美术：shingle、penny、seedsman&lt;br&gt;策划：穆风&lt;br&gt;音效：老K&lt;/p&gt;
+&lt;h1 id=&quot;游戏简介&quot;&gt;&lt;a href=&quot;#游戏简介&quot; class=&quot;headerlink&quot; title=&quot;游戏简介&quot;&gt;&lt;/a&gt;游戏简介&lt;/h1&gt;&lt;p&gt;“你”为了洗清身上的罪孽，在地狱接受救赎的刑罚。 玩家必须真心诚意地接受惩罚，感到疼痛时叫喊，被烫伤时甩手，表现得足够痛苦后地狱的使者才会放你过关。 【特色：声控、体感。游戏需要配合“叫喊”和“甩手”进行操作】&lt;/p&gt;
+&lt;h2 id=&quot;演示视频（密码-GGJ2016&quot;&gt;&lt;a href=&quot;#演示视频（密码-GGJ2016&quot; class=&quot;headerlink&quot; title=&quot;演示视频（密码:GGJ2016)&quot;&gt;&lt;/a&gt;演示视频（密码:GGJ2016)&lt;/h2&gt;&lt;p&gt;&lt;iframe height=&quot;498&quot; width=&quot;510&quot; src=&quot;http://player.youku.com/embed/XMTQ2MzM3MDI0NA==&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;&lt;br&gt;这是一款定位成惩罚活动的游戏。聚会的时候如果想看别人出丑就可以&lt;em&gt;嘿&lt;del&gt;嘿&lt;/del&gt;嘿~~&lt;/em&gt;&lt;br&gt;&lt;img src=&quot;/images/ggj2016/sketch.png&quot; alt=&quot;示意图&quot;&gt;&lt;br&gt;&lt;img src=&quot;/images/ggj2016/wave hand.gif&quot; alt=&quot;甩手&quot;&gt;&lt;br&gt;如图，演示视屏中没有来得及展示第二关。第二关开始会有火焰攻击，手上着火后需要上下摆动手臂，触发体感反馈来熄灭火焰。&lt;/p&gt;
+&lt;h2 id=&quot;设计思路&quot;&gt;&lt;a href=&quot;#设计思路&quot; class=&quot;headerlink&quot; title=&quot;设计思路&quot;&gt;&lt;/a&gt;设计思路&lt;/h2&gt;&lt;p&gt;充分理解了程序和美术的热情后，我找到了同时满足彼此特长的方案，决定制作一款让现场各位都能开心的游戏。&lt;br&gt;&lt;strong&gt;主题Ritual&lt;/strong&gt;&lt;br&gt;讨论之初美术提到了刑罚、诡异、七宗罪，程序说自己可以提供声控和体感。于是大致的方向就有了，我们可以做一款体感游戏。&lt;br&gt;然而讨论过程中，美术妹子过于沉溺于体感操作的新鲜感，提出了一些只是依靠体感来操作的传统游戏模式。这个思路并没有什么不妥，否认这个思路并非因为不够创新，而是无法掌控体验感。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;如果用体感替代传统游戏的操作，那操作仍然是重点。要用体感表现操作没有任何问题，我完全相信程序的实力，然而操作的内容却是一个问题。有经验的人都知道，最近打斗画面绚丽的游戏越来越多了，尽管看起来打斗漂亮，玩起来却很不痛快。这是因为缺乏体验曲线，全程都是很高亢的华丽斩杀，打小怪是这么几刀还好，打BOSS时还是这么几招就没有价值。实际游戏里肯定只有很少几种情况才能打出华丽的操作，&lt;strong&gt;不但要做出美好的高潮，还要做细腻的前期铺垫。&lt;/strong&gt;如此细致就无法去关注体感和美术内容。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;我个人则更倾向于用简单的游戏方式，来突出体感的特长——&lt;strong&gt;代入感&lt;/strong&gt;。制作方式就是简化操作，并铺开很大的量组做反馈内容，看起来就像太鼓达人。太鼓达人是一个十分优秀的例子，虽然操作只有“咚”“呛”两种，但反馈非常丰富。&lt;br&gt;太鼓达人中每按一下按钮：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;·音符轨道会变色&lt;/li&gt;
+&lt;li&gt;·音符轨道的重点会有三种命中程度提示&lt;/li&gt;
+&lt;li&gt;·命中时会有积分特效飞向分数文字&lt;/li&gt;
+&lt;li&gt;·命中时会有与歌曲主题有关的人偶飞向终点&lt;/li&gt;
+&lt;li&gt;·未命中时会有灰色的灵魂飞向终点&lt;/li&gt;
+&lt;li&gt;·屏幕下方的太鼓图像会变色&lt;/li&gt;
+&lt;li&gt;·50连击以上，轨道上飞来的音符会有动画&lt;/li&gt;
+&lt;li&gt;·不同歌曲的不同连击数达成后会在屏幕下方显示不同的角色动画&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;以这种形式来制作，可以减轻核心内容的压力，并且周边铺得越多感受越好。&lt;br&gt;于是我提出用做一个被鞭打时要叫喊的模式。&lt;br&gt;于美术：契合刑法和七宗罪，让她们能自由发挥&lt;em&gt;魔法少女小圆&lt;/em&gt;的画风。&lt;br&gt;于程序：充分展示声控和体感操作的技术。&lt;br&gt;于我：有效表达了很黄很暴力的主题，而且从演示效果来看，喊“啊”的时候绝对很羞耻。&lt;/p&gt;
+&lt;h1 id=&quot;总结&quot;&gt;&lt;a href=&quot;#总结&quot; class=&quot;headerlink&quot; title=&quot;总结&quot;&gt;&lt;/a&gt;总结&lt;/h1&gt;&lt;p&gt;体感操作时，操作的准确性对体验影响非常大。既玩家是游戏的一部分，如果玩家没有做到响应的程度，效果也会大大折扣。&lt;br&gt;这就是被鞭打时，喊“啊~”能给大家带来笑点的原因。后期改喊“爽”就是分出戏。&lt;br&gt;这点实际上看来还是和生活密切相关。就像一群小朋友玩老鹰抓小鸡，掺入一个不害怕被老鹰抓住的小鸡，对于那个孩子游戏就完全没有意思。&lt;br&gt;&lt;strong&gt;不论工作还是生活，都需要很高的切合度。&lt;/strong&gt;&lt;/p&gt;
+&lt;h1 id=&quot;运行环境&quot;&gt;&lt;a href=&quot;#运行环境&quot; class=&quot;headerlink&quot; title=&quot;运行环境&quot;&gt;&lt;/a&gt;运行环境&lt;/h1&gt;&lt;p&gt;游戏部分是C++写的，语音控制部分是python写的。&lt;/p&gt;
+&lt;h3 id=&quot;注意事项：&quot;&gt;&lt;a href=&quot;#注意事项：&quot; class=&quot;headerlink&quot; title=&quot;注意事项：&quot;&gt;&lt;/a&gt;注意事项：&lt;/h3&gt;&lt;p&gt;如果需要语音控制，需要安装Python的开发环境，Mac自带python2.7 所以只需要下载 pyaduio即可（pip install pyaudio）&lt;br&gt;如果不需要控制，只需要按 键盘 “J”，作为触发发声动作即可。&lt;/p&gt;
+&lt;h1 id=&quot;下载&quot;&gt;&lt;a href=&quot;#下载&quot; class=&quot;headerlink&quot; title=&quot;下载&quot;&gt;&lt;/a&gt;下载&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;http://indieace-game.oss-cn-hangzhou.aliyuncs.com/GGJ_2016%2Fapps.zip&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;apps.zip&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;小伙伴&quot;&gt;&lt;a href=&quot;#小伙伴&quot; class=&quot;headerlink&quot; title=&quot;小伙伴&quot;&gt;&lt;/a&gt;小伙伴&lt;/h1&gt;&lt;p&gt;程序：sommily、刘城&lt;br&gt;美术：shingle、penny、seedsman&lt;br&gt;策划：穆风&lt;br&gt;音效：老K&lt;/p&gt;
+&lt;
+    
+    </summary>
+    
+    
+      <category term="GlobalGamejam" scheme="http://yoursite.com/tags/GlobalGamejam/"/>
+    
+  </entry>
   
   <entry>
     <title>PKU ACM 1011 Sticks</title>
