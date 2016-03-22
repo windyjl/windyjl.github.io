@@ -191,15 +191,107 @@
 
     
     
+
+    
       
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/03/18/PKU-ACM-1012-Joseph/" itemprop="url">
+                  PKU ACM 1012 Joseph
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-18T09:51:27+08:00" content="2016-03-18">
+              2016-03-18
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/18/PKU-ACM-1012-Joseph/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/18/PKU-ACM-1012-Joseph/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
       
-        
-        
-        
       
 
       
-    
+        
+          
+            <h1 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h1><ul>
+<li>有n个人，编号1,2,……,n。</li>
+<li>报个数m，所有人围成一圈1到m抱树，抱到m的去死。其他继续，直到最右一个放生。</li>
+<li>现在有k*2个人，前一半是好人，后面是坏人。要求一个m，让坏人先死光。（0 &lt; k &lt; 14）</li>
+</ul>
+<p>个人想法，既然只有13种情况，枚举完留个表给PKU好了。</p>
+<p>忙了两天，回来静下来总结。这题有一些平时没注意的地方。</p>
+<ol>
+<li>最基本的计数方式，数人头，其实有两种逻辑——从第一个人开始数，杀了一个人后从下一个人开始数。这个表述方式在数组里显得太麻烦，我就改用链表了。</li>
+<li>剪枝prune。一开始只减了一个，就是砍到好人就return，没什么好说的。后来想想，如果这样需要剪掉的话，直接从枚举过程中去掉就好了。<br> 根据讨论区的总结，m=(k+1)<em>i || m=(k+1)</em>i+1。并没有推出为什么。从结果上来说，进行这一步剪枝后，仍然超时，他的意思就是让我们直接返回数组咯，反正只有13种情况。<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1>回忆了一下链表的知识，大概还能捋清楚头尾相连之类的。<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"><span class="comment">//import java.util.Arrays;</span></span><br><span class="line"><span class="comment">//import java.util.HashMap;</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> Main</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class</span> Guy&#123;</span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">static</span> Guy lastGuy = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">static</span> Guy stcNext = <span class="keyword">null</span>;</span><br><span class="line">        Guy pre;</span><br><span class="line">        Guy <span class="keyword">next</span>;</span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">int</span> id;</span><br><span class="line">        Guy(<span class="keyword">int</span> _id)&#123;</span><br><span class="line">            id = _id;</span><br><span class="line">            <span class="keyword">if</span> (lastGuy == <span class="keyword">null</span>) &#123;</span><br><span class="line">                lastGuy = <span class="keyword">this</span>;</span><br><span class="line">                <span class="keyword">this</span>.<span class="keyword">next</span> = <span class="keyword">this</span>;</span><br><span class="line">                <span class="keyword">this</span>.pre = <span class="keyword">this</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="comment">//four contact            lastGuy.pre lastGuy.next</span></span><br><span class="line">                <span class="keyword">next</span> = lastGuy.<span class="keyword">next</span>;</span><br><span class="line">                pre = lastGuy;</span><br><span class="line">                lastGuy.<span class="keyword">next</span> = <span class="keyword">this</span>;</span><br><span class="line">                <span class="keyword">next</span>.pre = <span class="keyword">this</span>;</span><br><span class="line">                <span class="comment">//Mark</span></span><br><span class="line">                lastGuy = <span class="keyword">this</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//</span></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> stepNext()&#123;</span><br><span class="line">            <span class="keyword">while</span> (flags[stcNext.id]) &#123;</span><br><span class="line">                stcNext = stcNext.<span class="keyword">next</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            stcNext = stcNext.<span class="keyword">next</span>;</span><br><span class="line">            <span class="keyword">return</span> stcNext.pre.id;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Scanner in = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> k;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Guy[] guys;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span>[] flags;</span><br><span class="line">    <span class="comment">//public static HashMap map = new HashMap();</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args)&#123;</span><br><span class="line">        <span class="keyword">while</span>((k = in.nextInt()) != <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="comment">//guys = new int[k*2];</span></span><br><span class="line">            guys = <span class="keyword">new</span> Guy[k*<span class="number">2</span>];</span><br><span class="line">            Guy.lastGuy = <span class="keyword">null</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;guys.length;i++)&#123;</span><br><span class="line">                guys[i] = <span class="keyword">new</span> Guy(i);</span><br><span class="line">            &#125;</span><br><span class="line">            flags = <span class="keyword">new</span> <span class="keyword">boolean</span>[k*<span class="number">2</span>]; </span><br><span class="line"><span class="comment">//          long time = System.currentTimeMillis();</span></span><br><span class="line"><span class="comment">//          int mod;</span></span><br><span class="line">            <span class="keyword">int</span> index = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">boolean</span> res = <span class="keyword">false</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;;i++)&#123;</span><br><span class="line"><span class="comment">//              mod = i%flags.length;</span></span><br><span class="line"><span class="comment">//              if(mod&lt;k&amp;&amp;mod!=0)continue;</span></span><br><span class="line"><span class="comment">//              if(i%flags.length&lt;k &amp;&amp; i!=2)continue;</span></span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;<span class="number">2</span>;j++)&#123;</span><br><span class="line">                    index = (k+<span class="number">1</span>)*i+j;</span><br><span class="line">                    <span class="keyword">if</span>(Solution(index))&#123;</span><br><span class="line">                        res = <span class="keyword">true</span>;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(res)&#123;</span><br><span class="line">                    System.out.<span class="keyword">println</span>(index);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                    </span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line"></span><br><span class="line"><span class="comment">//           System.out.println("times:" + (System.currentTimeMillis() - time));</span></span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> Solution(<span class="keyword">int</span> m)&#123;</span><br><span class="line">        <span class="keyword">int</span> <span class="keyword">count</span> = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> <span class="keyword">step</span> = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> index = -<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;flags.length;j++)&#123;</span><br><span class="line">            flags[j] = <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        Guy.stcNext = guys[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">while</span>(<span class="keyword">count</span>&lt;k)&#123;</span><br><span class="line">            <span class="keyword">step</span> = m%(flags.length-<span class="keyword">count</span>);</span><br><span class="line">            <span class="keyword">if</span>(<span class="keyword">step</span>==<span class="number">0</span>)&#123;</span><br><span class="line">                <span class="keyword">step</span> = flags.length-<span class="keyword">count</span>;</span><br><span class="line">            &#125;</span><br><span class="line"><span class="comment">//          if(count==0&amp;&amp;step&lt;k)return false;</span></span><br><span class="line">            <span class="keyword">while</span> (<span class="keyword">step</span>&gt;<span class="number">0</span>) &#123;</span><br><span class="line">                index = Guy.stepNext();</span><br><span class="line">                <span class="keyword">step</span>--;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span>(index&lt;k)&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                flags[index] = <span class="keyword">true</span>;</span><br><span class="line">                <span class="keyword">count</span> ++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">//  boolean checkNextStep(int step,Integer index)&#123;</span></span><br><span class="line"><span class="comment">//      if(flags[index])&#123;</span></span><br><span class="line"><span class="comment">//          index++;</span></span><br><span class="line"><span class="comment">//      &#125;</span></span><br><span class="line"><span class="comment">//  &#125;</span></span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
 
     
       
@@ -299,6 +391,336 @@
 
 
     
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/03/15/GlobalGamejam-2016-救赎圣经（Redemption-Bible）/" itemprop="url">
+                  GlobalGamejam 2016 救赎圣经（Redemption Bible）
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-15T15:29:09+08:00" content="2016-03-15">
+              2016-03-15
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/15/GlobalGamejam-2016-救赎圣经（Redemption-Bible）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/15/GlobalGamejam-2016-救赎圣经（Redemption-Bible）/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="小伙伴"><a href="#小伙伴" class="headerlink" title="小伙伴"></a>小伙伴</h1><p>程序：sommily、刘城<br>美术：shingle、penny、seedsman<br>策划：穆风<br>音效：老K</p>
+<h1 id="游戏简介"><a href="#游戏简介" class="headerlink" title="游戏简介"></a>游戏简介</h1><p>“你”为了洗清身上的罪孽，在地狱接受救赎的刑罚。 玩家必须真心诚意地接受惩罚，感到疼痛时叫喊，被烫伤时甩手，表现得足够痛苦后地狱的使者才会放你过关。 【特色：声控、体感。游戏需要配合“叫喊”和“甩手”进行操作】</p>
+<h2 id="演示视频（密码-GGJ2016"><a href="#演示视频（密码-GGJ2016" class="headerlink" title="演示视频（密码:GGJ2016)"></a>演示视频（密码:GGJ2016)</h2><p><iframe height="498" width="510" src="http://player.youku.com/embed/XMTQ2MzM3MDI0NA==" frameborder="0" allowfullscreen></iframe><br>这是一款定位成惩罚活动的游戏。聚会的时候如果想看别人出丑就可以<em>嘿<del>嘿</del>嘿~~</em><br><img src="/images/ggj2016/sketch.png" alt="示意图"><br><img src="/images/ggj2016/wave hand.gif" alt="甩手"><br>如图，演示视屏中没有来得及展示第二关。第二关开始会有火焰攻击，手上着火后需要上下摆动手臂，触发体感反馈来熄灭火焰。</p>
+<h2 id="设计思路"><a href="#设计思路" class="headerlink" title="设计思路"></a>设计思路</h2><p>充分理解了程序和美术的热情后，我找到了同时满足彼此特长的方案，决定制作一款让现场各位都能开心的游戏。<br><strong>主题Ritual</strong><br>讨论之初美术提到了刑罚、诡异、七宗罪，程序说自己可以提供声控和体感。于是大致的方向就有了，我们可以做一款体感游戏。<br>然而讨论过程中，美术妹子过于沉溺于体感操作的新鲜感，提出了一些只是依靠体感来操作的传统游戏模式。这个思路并没有什么不妥，否认这个思路并非因为不够创新，而是无法掌控体验感。</p>
+<blockquote>
+<p>如果用体感替代传统游戏的操作，那操作仍然是重点。要用体感表现操作没有任何问题，我完全相信程序的实力，然而操作的内容却是一个问题。有经验的人都知道，最近打斗画面绚丽的游戏越来越多了，尽管看起来打斗漂亮，玩起来却很不痛快。这是因为缺乏体验曲线，全程都是很高亢的华丽斩杀，打小怪是这么几刀还好，打BOSS时还是这么几招就没有价值。实际游戏里肯定只有很少几种情况才能打出华丽的操作，<strong>不但要做出美好的高潮，还要做细腻的前期铺垫。</strong>如此细致就无法去关注体感和美术内容。</p>
+</blockquote>
+<p>我个人则更倾向于用简单的游戏方式，来突出体感的特长——<strong>代入感</strong>。制作方式就是简化操作，并铺开很大的量组做反馈内容，看起来就像太鼓达人。太鼓达人是一个十分优秀的例子，虽然操作只有“咚”“呛”两种，但反馈非常丰富。<br>太鼓达人中每按一下按钮：</p>
+<ul>
+<li>·音符轨道会变色</li>
+<li>·音符轨道的重点会有三种命中程度提示</li>
+<li>·命中时会有积分特效飞向分数文字</li>
+<li>·命中时会有与歌曲主题有关的人偶飞向终点</li>
+<li>·未命中时会有灰色的灵魂飞向终点</li>
+<li>·屏幕下方的太鼓图像会变色</li>
+<li>·50连击以上，轨道上飞来的音符会有动画</li>
+<li>·不同歌曲的不同连击数达成后会在屏幕下方显示不同的角色动画</li>
+</ul>
+<p>以这种形式来制作，可以减轻核心内容的压力，并且周边铺得越多感受越好。<br>于是我提出用做一个被鞭打时要叫喊的模式。<br>于美术：契合刑法和七宗罪，让她们能自由发挥<em>魔法少女小圆</em>的画风。<br>于程序：充分展示声控和体感操作的技术。<br>于我：有效表达了很黄很暴力的主题，而且从演示效果来看，喊“啊”的时候绝对很羞耻。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>体感操作时，操作的准确性对体验影响非常大。既玩家是游戏的一部分，如果玩家没有做到响应的程度，效果也会大大折扣。<br>这就是被鞭打时，喊“啊~”能给大家带来笑点的原因。后期改喊“爽”就是分出戏。<br>这点实际上看来还是和生活密切相关。就像一群小朋友玩老鹰抓小鸡，掺入一个不害怕被老鹰抓住的小鸡，对于那个孩子游戏就完全没有意思。<br><strong>不论工作还是生活，都需要很高的切合度。</strong></p>
+<h1 id="运行环境"><a href="#运行环境" class="headerlink" title="运行环境"></a>运行环境</h1><p>游戏部分是C++写的，语音控制部分是python写的。</p>
+<h3 id="注意事项："><a href="#注意事项：" class="headerlink" title="注意事项："></a>注意事项：</h3><p>如果需要语音控制，需要安装Python的开发环境，Mac自带python2.7 所以只需要下载 pyaduio即可（pip install pyaudio）<br>如果不需要控制，只需要按 键盘 “J”，作为触发发声动作即可。</p>
+<h1 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h1><p><a href="http://indieace-game.oss-cn-hangzhou.aliyuncs.com/GGJ_2016%2Fapps.zip" target="_blank" rel="external">apps.zip</a></p>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/03/12/PKU-ACM-1011-Sticks/" itemprop="url">
+                  PKU ACM 1011 Sticks
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-12T09:57:42+08:00" content="2016-03-12">
+              2016-03-12
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/12/PKU-ACM-1011-Sticks/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/12/PKU-ACM-1011-Sticks/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>逗比乔治撸了几个长度一样的管。不小心撸断了，碎成好几段。现在要从碎掉的几段里，推测原本管子长度最短可能是多少。<br>简单说就说很富杂的东西。<br>可以穷举搞定，有几个地方能优化。</p>
+<ol>
+<li>最长的碎片，说明原始长度不可能比他短。</li>
+<li><p>碎片总和，原始长度不会比他长。</p>
+<pre><code>**坑点**
+. 验证数组中的组合能满足猜测的长度。需要尝试多种长度，多种方式的组合
+. 递归结果的返回，有很多种解，都要尝试。会出现用掉别人的parts导致加不出的情况。
+2016年3月12日12点36分43秒
+看了会片回来，觉得有三层递归。
+最底层，寻找满足求和方式的组合
+每种不同的求和方式，都要开一条线检测后续能否继续剪完
+最上，尝试各种长度
+</code></pre></li>
+</ol>
+<p>经过一番挣扎，我的做法还是在空间和时间复杂度上都极其不优雅。虽然题目只报了超时，但估计内存也会超。<br>查看别人的代码后总结如下优化点</p>
+<h2 id="寻找求和组合的方式"><a href="#寻找求和组合的方式" class="headerlink" title="寻找求和组合的方式"></a>寻找求和组合的方式</h2><p>我很傻的使用了独立数组去存储每种求和方式，然后把数组返回过来，再遍历一次这个数组从总sticks里去掉重复项。<br>参考的代码只用了一个数组，标记true/false，true表示用过，false没有。进行下一层递归前把用掉的数字设true，反正递归结束发现这个做法不行时会设会false。</p>
+<h2 id="完成一个长度的验证"><a href="#完成一个长度的验证" class="headerlink" title="完成一个长度的验证"></a>完成一个长度的验证</h2><p>原本我是检查是否所用sticks都用过，然而如果没次都检测所有的格子是否是true，那又是一个n^2以上。<br>参考的算法里，通过设定单个长度，和总长相除获得了全根数。只要每次找到一种合适的加法，把已找到的根数+1就可以判断是否完成人物。</p>
+<h2 id="已知组合的搜索跳过"><a href="#已知组合的搜索跳过" class="headerlink" title="已知组合的搜索跳过"></a>已知组合的搜索跳过</h2><p>在求和检测中，一次for循环里，如果当前数字无解，那么相同数字在当前遍历中也是无解的。<br>本来相对这个优化举一反三，让这次遍历中，对相同的数字全部跳过。</p>
+<h3 id="建立跳过表"><a href="#建立跳过表" class="headerlink" title="建立跳过表"></a>建立跳过表</h3><p>与标记是否使用过的表格一样，当检查到无法使用的数字时：从当前位置开始向后，把值设为true。同一次遍历中，不再检测相同的数字。<br>但下一次递归中就要重置，因为状态变化了，所以一张表只在一次遍历中有用。那么就会造成更大的空间复杂度。</p>
+<pre><code>其实这个问题已经在排序中解决过了。
+</code></pre><h1 id="最后使用的方法"><a href="#最后使用的方法" class="headerlink" title="最后使用的方法"></a>最后使用的方法</h1><p>在查阅资料后，注意到几点<br>· 数据用降序排列效率更高   <em>从头几支的搜索来分析，先搜索大的数可以减少深度。具体并不清楚。</em><br>· 基于降序排列，原本升序数组可以在==判断后剪枝的内容不可行。&gt;的情况同理    <em>原来下一位会比现在大，永远不满足判断条件。</em><br>· <strong>如果搜索中没有找到结果，也要把总长输出来（只有一根的情况）</strong><br>· _sum，就是当&lt;情况时传递的参数。如果两个判断之后 _sum==0，就跳过后续的遍历。为什么呢？它象征的是空手开始找线索。他从两种意义上来说都是必然有结果的。</p>
+<pre><code>1. 一根棒子必然属于正确解的一部分。（这样理解容易产生误差，并不排除因为组合问题导致一根棍子找不到配对的情况）
+2. 因为列表中的每一项都是解的一部分，从哪一只都应该能找到正确解。所以正确的来说只需要一个起点，并走到底。
+
+    综上，在同一次遍历中，只需要随便一跟都是对的。但如果手上已经拿这一根，但找不出答案，那可能是第二个根拿错了。
+</code></pre><h2 id="坑自己"><a href="#坑自己" class="headerlink" title="坑自己"></a>坑自己</h2><p>之前在一份C语言的参考代码中看用while跳过重复数据的写法，在学习过程中写错，对每次跳过都写了一次赋值，消耗的量比较大。<br>在最后的优化中，考虑到每次遍历记录skip下标的赋值操作是不是也会很耗，于是写了个while式的。其实没什么卵用，用64个的那组数据测试比原来写法平均长200ms。<br>这里的原因是仍然是数量级问题，因为之前写错的时候是在一次搜索里赋值好几次。而skip的方式同样是一个判断，一个赋值，甚至不用考虑 <strong>下标越界</strong>。</p>
+<p><a href="/files/pku1011.java">我的代码</a><br><a href="/files/TestData_SoManyLine.txt">测试数据·行数多</a><br><a href="/files/TestDataAnser_SoManyLine.txt">测试数据答案·行数多</a><br><a href="/files/TestData_64input.txt">测试数据·长度长</a><br><a href="/files/herface.png">测试数据答案·长度长</a>454</p>
+<p>参考代码<br><a href="http://poj.org/showmessage?message_id=348052" target="_blank" rel="external">DPS C</a><br>C中，对重复数据的跳过用了while判断，但最后一位越界没做处理。<br><a href="http://poj.org/showmessage?message_id=172596" target="_blank" rel="external">Java</a><br>这个就是我对了半天，发现效率不一样，才知道他们是降序的源头XP</p>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/03/11/PKU-ACM-3125-Printer-Queue/" itemprop="url">
+                  PKU ACM 3125 Printer Queue
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-11T17:15:45+08:00" content="2016-03-11">
+              2016-03-11
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/11/PKU-ACM-3125-Printer-Queue/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/11/PKU-ACM-3125-Printer-Queue/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>用打印机的人很多，需要做排序，有1到9共9种优先级。优先的文件先打印，每一份一分钟。<br><strong>坑点：</strong>如果队列中有比当前文件优先级高，则把他排到队尾。<br>格式<br>第1行：运行几次（之后每次运行处理两行数据）<br>第2.1行：打印队列总数，以及我们的文件所在的位置（位置从0开始）<br>第2.2行：每个位置上的文件的优先度</p>
+<p>时间花费</p>
+<ol>
+<li>做完提交发现这货没有把列表完全按照优先级排序，而是每次有更高优先级的情况时把当前的文件丢到最后。于是把原来 “大于我优先级的总数+同优先级的排序位置”方式放弃</li>
+<li><p>用了完全模拟的方式，每次读一个，不是就往后丢。只用一个int记录目标文件的序号，如果该需要的文件被打印就输出打印的时间和。</p>
+<pre><code>因为跟踪这个位置的概念很抽象，浪费了一点时间尝试和校准。
+</code></pre></li>
+<li>复制数组的时候居然在for里写了[0]     XD</li>
+</ol>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line">import java.util.Scanner;</span><br><span class="line">import java.util.Arrays;</span><br><span class="line">import java.util.ArrayList;</span><br><span class="line"><span class="comment">//import java.util.HashMap;</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> Main</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Scanner in = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">    <span class="comment">//public static HashMap map = new HashMap();</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> times = in.nextInt();</span><br><span class="line">        <span class="keyword">int</span> listSize;</span><br><span class="line">        <span class="keyword">int</span> myPosition;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;times;++i)&#123;</span><br><span class="line">            listSize = in.nextInt();</span><br><span class="line">            myPosition = in.nextInt();</span><br><span class="line">            <span class="keyword">int</span>[] priorities = <span class="keyword">new</span> <span class="keyword">int</span>[listSize];</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;listSize;++j)&#123;</span><br><span class="line">                priorities[j] = in.nextInt();</span><br><span class="line">            &#125;</span><br><span class="line">            Solution2(priorities,myPosition,listSize);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//it's a wrong anser,because of they sort list every while find ohter prioities higher than first one</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Solution1</span><span class="params">(<span class="keyword">int</span> []_pri,<span class="keyword">int</span> myPosition,<span class="keyword">int</span> listSize)</span></span>&#123;</span><br><span class="line">        <span class="comment">//find my _pri</span></span><br><span class="line">        <span class="keyword">int</span>[] sorter = _pri.clone();</span><br><span class="line">        Arrays.sort(sorter);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> samePriCount=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;myPosition;++j)&#123;</span><br><span class="line">            <span class="keyword">if</span>(_pri[myPosition] == _pri[j])&#123;</span><br><span class="line">                samePriCount++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> samePriPos = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j=sorter.length-<span class="number">1</span>;j&gt;=<span class="number">0</span>;--j)&#123;</span><br><span class="line">            <span class="keyword">if</span>(sorter[j]!=_pri[myPosition])&#123;</span><br><span class="line">                samePriPos++;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        System.out.println(samePriPos + samePriCount + <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Solution2</span><span class="params">(<span class="keyword">int</span> []_pri,<span class="keyword">int</span> myPosition,<span class="keyword">int</span> listSize)</span></span>&#123;</span><br><span class="line">        ArrayList&lt;Integer&gt; <span class="built_in">list</span> = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;_pri.length; ++i) &#123;</span><br><span class="line">            <span class="built_in">list</span>.add(_pri[i]);</span><br><span class="line">        &#125;   </span><br><span class="line">        <span class="keyword">int</span> wait = <span class="number">0</span>;</span><br><span class="line">        boolean isPriMax = <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">while</span>(<span class="built_in">list</span>.size()&gt;<span class="number">0</span>)&#123;</span><br><span class="line">            isPriMax = <span class="literal">true</span>;</span><br><span class="line">            <span class="keyword">int</span> priNow = <span class="built_in">list</span>.get(<span class="number">0</span>);</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;<span class="built_in">list</span>.size(); ++i) &#123;</span><br><span class="line">                <span class="keyword">if</span> (priNow&lt;<span class="built_in">list</span>.get(i)) &#123;</span><br><span class="line">                    <span class="built_in">list</span>.remove(<span class="number">0</span>);</span><br><span class="line">                    <span class="built_in">list</span>.add(priNow);</span><br><span class="line">                    isPriMax = <span class="literal">false</span>;</span><br><span class="line">                    myPosition--;</span><br><span class="line">                    <span class="keyword">if</span>(myPosition&lt;<span class="number">0</span>)&#123;</span><br><span class="line">                        myPosition = <span class="built_in">list</span>.size()-<span class="number">1</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(isPriMax)&#123;</span><br><span class="line">                myPosition--;</span><br><span class="line">                <span class="built_in">list</span>.remove(<span class="number">0</span>);</span><br><span class="line">                wait++;</span><br><span class="line">                <span class="keyword">if</span>(myPosition&lt;<span class="number">0</span>)&#123;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(wait);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
 
   </section>
 
@@ -345,7 +767,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-count">17</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
