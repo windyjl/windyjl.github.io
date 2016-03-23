@@ -191,11 +191,105 @@
 
     
     
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/03/11/PKU-ACM-3125-Printer-Queue/" itemprop="url">
+                  PKU ACM 3125 Printer Queue
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-11T17:15:45+08:00" content="2016-03-11">
+              2016-03-11
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/11/PKU-ACM-3125-Printer-Queue/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/11/PKU-ACM-3125-Printer-Queue/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
       
       
 
       
-    
+        
+          
+            <p>用打印机的人很多，需要做排序，有1到9共9种优先级。优先的文件先打印，每一份一分钟。<br><strong>坑点：</strong>如果队列中有比当前文件优先级高，则把他排到队尾。<br>格式<br>第1行：运行几次（之后每次运行处理两行数据）<br>第2.1行：打印队列总数，以及我们的文件所在的位置（位置从0开始）<br>第2.2行：每个位置上的文件的优先度</p>
+<p>时间花费</p>
+<ol>
+<li>做完提交发现这货没有把列表完全按照优先级排序，而是每次有更高优先级的情况时把当前的文件丢到最后。于是把原来 “大于我优先级的总数+同优先级的排序位置”方式放弃</li>
+<li><p>用了完全模拟的方式，每次读一个，不是就往后丢。只用一个int记录目标文件的序号，如果该需要的文件被打印就输出打印的时间和。</p>
+<pre><code>因为跟踪这个位置的概念很抽象，浪费了一点时间尝试和校准。
+</code></pre></li>
+<li>复制数组的时候居然在for里写了[0]     XD</li>
+</ol>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line">import java.util.Scanner;</span><br><span class="line">import java.util.Arrays;</span><br><span class="line">import java.util.ArrayList;</span><br><span class="line"><span class="comment">//import java.util.HashMap;</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> Main</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Scanner in = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">    <span class="comment">//public static HashMap map = new HashMap();</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> times = in.nextInt();</span><br><span class="line">        <span class="keyword">int</span> listSize;</span><br><span class="line">        <span class="keyword">int</span> myPosition;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;times;++i)&#123;</span><br><span class="line">            listSize = in.nextInt();</span><br><span class="line">            myPosition = in.nextInt();</span><br><span class="line">            <span class="keyword">int</span>[] priorities = <span class="keyword">new</span> <span class="keyword">int</span>[listSize];</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;listSize;++j)&#123;</span><br><span class="line">                priorities[j] = in.nextInt();</span><br><span class="line">            &#125;</span><br><span class="line">            Solution2(priorities,myPosition,listSize);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//it's a wrong anser,because of they sort list every while find ohter prioities higher than first one</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Solution1</span><span class="params">(<span class="keyword">int</span> []_pri,<span class="keyword">int</span> myPosition,<span class="keyword">int</span> listSize)</span></span>&#123;</span><br><span class="line">        <span class="comment">//find my _pri</span></span><br><span class="line">        <span class="keyword">int</span>[] sorter = _pri.clone();</span><br><span class="line">        Arrays.sort(sorter);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> samePriCount=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;myPosition;++j)&#123;</span><br><span class="line">            <span class="keyword">if</span>(_pri[myPosition] == _pri[j])&#123;</span><br><span class="line">                samePriCount++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> samePriPos = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j=sorter.length-<span class="number">1</span>;j&gt;=<span class="number">0</span>;--j)&#123;</span><br><span class="line">            <span class="keyword">if</span>(sorter[j]!=_pri[myPosition])&#123;</span><br><span class="line">                samePriPos++;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        System.out.println(samePriPos + samePriCount + <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Solution2</span><span class="params">(<span class="keyword">int</span> []_pri,<span class="keyword">int</span> myPosition,<span class="keyword">int</span> listSize)</span></span>&#123;</span><br><span class="line">        ArrayList&lt;Integer&gt; <span class="built_in">list</span> = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;_pri.length; ++i) &#123;</span><br><span class="line">            <span class="built_in">list</span>.add(_pri[i]);</span><br><span class="line">        &#125;   </span><br><span class="line">        <span class="keyword">int</span> wait = <span class="number">0</span>;</span><br><span class="line">        boolean isPriMax = <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">while</span>(<span class="built_in">list</span>.size()&gt;<span class="number">0</span>)&#123;</span><br><span class="line">            isPriMax = <span class="literal">true</span>;</span><br><span class="line">            <span class="keyword">int</span> priNow = <span class="built_in">list</span>.get(<span class="number">0</span>);</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;<span class="built_in">list</span>.size(); ++i) &#123;</span><br><span class="line">                <span class="keyword">if</span> (priNow&lt;<span class="built_in">list</span>.get(i)) &#123;</span><br><span class="line">                    <span class="built_in">list</span>.remove(<span class="number">0</span>);</span><br><span class="line">                    <span class="built_in">list</span>.add(priNow);</span><br><span class="line">                    isPriMax = <span class="literal">false</span>;</span><br><span class="line">                    myPosition--;</span><br><span class="line">                    <span class="keyword">if</span>(myPosition&lt;<span class="number">0</span>)&#123;</span><br><span class="line">                        myPosition = <span class="built_in">list</span>.size()-<span class="number">1</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(isPriMax)&#123;</span><br><span class="line">                myPosition--;</span><br><span class="line">                <span class="built_in">list</span>.remove(<span class="number">0</span>);</span><br><span class="line">                wait++;</span><br><span class="line">                <span class="keyword">if</span>(myPosition&lt;<span class="number">0</span>)&#123;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(wait);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
 
     
       
@@ -594,99 +688,6 @@ git 提示我需要加-r ，加载末尾就好了
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/03/02/VS自动补全-设置/" itemprop="url">
-                  VS自动补全 设置
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-02T21:58:24+08:00" content="2016-03-02">
-              2016-03-02
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/03/02/VS自动补全-设置/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/02/VS自动补全-设置/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>VS自带的代码补全功能不支持支持跳字输入的情况，比如v3不会匹配到Vector3。因为一直习惯了这样的输入方式，有点不爽，就开始找原因。</p>
-<p>在不是很懂的情况多试了一些复选框，Listboxes选项卡的第一个条“Enable Visual Assist Completion……”。<br>勾上就好了，提示框会忽略顺序，优先在列表里找出顺序符合，匹配字数最多的。原来之前都没勾上，用的全是VS自带的补全XP。</p>
-<p>VS自带的攻能名字叫<strong>intellisense</strong>，智能感知。<br><strong>Snippet</strong>更偏向if(){}else{}一类吧，虽然以前在Sublime上下插件的时候有补全插件用这类名字命名。</p>
-
-          
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -733,7 +734,7 @@ git 提示我需要加-r ，加载末尾就好了
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">17</span>
+              <span class="site-state-item-count">18</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
