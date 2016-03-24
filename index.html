@@ -214,6 +214,104 @@
             
               
                 
+                <a class="post-title-link" href="/2016/03/23/PKU-ACM-1014-Dividing/" itemprop="url">
+                  PKU ACM 1014 Dividing
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-23T21:27:48+08:00" content="2016-03-23">
+              2016-03-23
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/23/PKU-ACM-1014-Dividing/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/23/PKU-ACM-1014-Dividing/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h1><p>输入n1 n2 …… n6，每个位置代表对应分值有多少数量。要平均分两份。</p>
+<h1 id="梳理"><a href="#梳理" class="headerlink" title="梳理"></a>梳理</h1><ol>
+<li>首先总和一定要是偶数</li>
+<li>找出一种方法，其和是总值的一半。这个跟之前做的stick很像。（如果是这样，那么主要工作量在剪枝）</li>
+</ol>
+<h1 id="中途做了一半重新梳理"><a href="#中途做了一半重新梳理" class="headerlink" title="中途做了一半重新梳理"></a>中途做了一半重新梳理</h1><p>虽然用深度搜索可以完成工作，但是面对稍微大量的数据就会十分缓慢。所以决定拆了重写。<br>首先确定如果每一位上都是偶数，那么肯定是能够平均分的。<br>如果某一位上是奇数，则拆借其他位置上的数来补充。<br>补充时，以对应数字的1倍到最大公倍数60为跨度。比如6分的石头是奇数个，那么用5补充时，发现配不平，则采用12,18,24,30。30的时候发现平了等等。<br>暂时称为借位搜索。</p>
+<h1 id="最后梳理"><a href="#最后梳理" class="headerlink" title="最后梳理"></a>最后梳理</h1><p>前一版提出的算法并不成熟，当然一个下午想闭门造出新的算法也很不实际。最后提交版本用的是优化输入数据的办法，继续深度搜索。<br>因为各个数字超过一定数量后，都可以用他们本身的数量去填平其他数字不足的地方。比如我有100个1，那其他数字再怎么折腾也能配得平了。<br>那具体多少个呢？严谨地说没算出来。有人建议是最小公倍数/value,也就是代码中的值。</p>
+<pre><code>然而并没有结束，我最后需要研究下**动态规划**求另一种解法。
+</code></pre><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br></pre></td><td class="code"><pre><span class="line">import java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> Main&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Scanner in = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] marbles = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">6</span>];</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> count,half;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> collections = <span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span>[] b = &#123;<span class="number">60</span>, <span class="number">30</span>, <span class="number">20</span>, <span class="number">15</span>, <span class="number">12</span>, <span class="number">10</span>&#125;;</span><br><span class="line">        <span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">            boolean isEnd = <span class="literal">true</span>;</span><br><span class="line">            count = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">6</span>;i++)&#123;</span><br><span class="line">                marbles[i] = in.nextInt()%b[i];</span><br><span class="line">                count += (i+<span class="number">1</span>)*marbles[i];</span><br><span class="line">                <span class="keyword">if</span>(marbles[i]!=<span class="number">0</span>)</span><br><span class="line">                    isEnd = <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(isEnd)</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            collections++;</span><br><span class="line">            System.out.println(<span class="string">"Collection #"</span>+collections+<span class="string">":"</span>);</span><br><span class="line"><span class="comment">//Collection #1:</span></span><br><span class="line"><span class="comment">//Can't be divided.         </span></span><br><span class="line">            <span class="keyword">if</span>(count%<span class="number">2</span>==<span class="number">1</span>)&#123;</span><br><span class="line">                System.out.println(<span class="string">"Can't be divided.\n"</span>);</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                half = count/<span class="number">2</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            boolean res = <span class="literal">false</span>;</span><br><span class="line"><span class="comment">//          if(count&gt;1000)&#123;</span></span><br><span class="line"><span class="comment">//              res = cs(5);</span></span><br><span class="line"><span class="comment">//          &#125;else </span></span><br><span class="line">            &#123;</span><br><span class="line">                res = dfs(half,<span class="number">0</span>,-<span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(res)&#123;</span><br><span class="line">                System.out.println(<span class="string">"Can be divided.\n"</span>);</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                System.out.println(<span class="string">"Can't be divided.\n"</span>);</span><br><span class="line">            &#125;</span><br><span class="line"><span class="comment">//          String str = "";</span></span><br><span class="line"><span class="comment">//          for(int i=0;i&lt;6;i++)&#123;</span></span><br><span class="line"><span class="comment">//              str += marbles[i] + " ";</span></span><br><span class="line"><span class="comment">//          &#125;</span></span><br><span class="line"><span class="comment">//          System.out.println(str);</span></span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> boolean <span class="title">cs</span><span class="params">(<span class="keyword">int</span> depth)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (depth==<span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span>(marbles[depth]%<span class="number">2</span>==<span class="number">0</span>)&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(marbles[depth]%<span class="number">2</span>==<span class="number">0</span>)&#123;</span><br><span class="line">                <span class="keyword">return</span> cs(depth-<span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; <span class="number">60</span>/(depth+<span class="number">1</span>)&gt;=i<span class="comment">/*&amp;&amp;(depth+1)*i&lt;half*/</span>; i++) &#123;</span><br><span class="line">                    <span class="keyword">if</span>(dfs((depth+<span class="number">1</span>)*i,<span class="number">0</span>,depth))&#123;</span><br><span class="line">                        marbles[depth]-=i;</span><br><span class="line">                        <span class="keyword">return</span> cs(depth-<span class="number">1</span>);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// public static boolean dfs(int target,int sum)&#123;</span></span><br><span class="line">    <span class="comment">//  if(sum&lt;target)&#123;</span></span><br><span class="line">    <span class="comment">//      for(int i=5;i&gt;=0;i--)&#123;</span></span><br><span class="line">    <span class="comment">//          if(marbles[i]&lt;=0)&#123;</span></span><br><span class="line">    <span class="comment">//              continue;</span></span><br><span class="line">    <span class="comment">//          &#125;</span></span><br><span class="line">    <span class="comment">//          if(i+1+sum&lt;target)&#123;</span></span><br><span class="line">    <span class="comment">//              marbles[i]--;</span></span><br><span class="line">    <span class="comment">//              if(dfs(sum+i+1,target))&#123;</span></span><br><span class="line">    <span class="comment">//                  return dfs();</span></span><br><span class="line">    <span class="comment">//              &#125;else&#123;</span></span><br><span class="line">    <span class="comment">//                  marbles[i]++;</span></span><br><span class="line">    <span class="comment">//              &#125;</span></span><br><span class="line">    <span class="comment">//          &#125;</span></span><br><span class="line">    <span class="comment">//          else if(i+1+sum==target)&#123;</span></span><br><span class="line">    <span class="comment">//              return dfs(0,0,depth-1);</span></span><br><span class="line">    <span class="comment">//          &#125;</span></span><br><span class="line">    <span class="comment">//      &#125;</span></span><br><span class="line">    <span class="comment">//  &#125;</span></span><br><span class="line">    <span class="comment">// &#125;</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> boolean <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> target,<span class="keyword">int</span> sum,<span class="keyword">int</span> skip)</span></span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">5</span>;i&gt;=<span class="number">0</span>;i--)&#123;</span><br><span class="line">            <span class="keyword">if</span>(i==skip)<span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">if</span>(marbles[i]&lt;=<span class="number">0</span>)&#123;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(i+<span class="number">1</span>+sum&lt;target)&#123;</span><br><span class="line">                marbles[i]--;</span><br><span class="line">                <span class="keyword">if</span>(dfs(target,sum+i+<span class="number">1</span>,skip))&#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    marbles[i]++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(i+<span class="number">1</span>+sum==target)&#123;</span><br><span class="line">                marbles[i]--;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/03/23/PKU-ACM-1013-Counterfeit-Dollar/" itemprop="url">
                   PKU ACM 1013 Counterfeit Dollar
                 </a>
@@ -602,124 +700,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/03/12/PKU-ACM-1011-Sticks/" itemprop="url">
-                  PKU ACM 1011 Sticks
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-12T09:57:42+08:00" content="2016-03-12">
-              2016-03-12
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/03/12/PKU-ACM-1011-Sticks/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/12/PKU-ACM-1011-Sticks/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>逗比乔治撸了几个长度一样的管。不小心撸断了，碎成好几段。现在要从碎掉的几段里，推测原本管子长度最短可能是多少。<br>简单说就说很富杂的东西。<br>可以穷举搞定，有几个地方能优化。</p>
-<ol>
-<li>最长的碎片，说明原始长度不可能比他短。</li>
-<li><p>碎片总和，原始长度不会比他长。</p>
-<pre><code>**坑点**
-. 验证数组中的组合能满足猜测的长度。需要尝试多种长度，多种方式的组合
-. 递归结果的返回，有很多种解，都要尝试。会出现用掉别人的parts导致加不出的情况。
-2016年3月12日12点36分43秒
-看了会片回来，觉得有三层递归。
-最底层，寻找满足求和方式的组合
-每种不同的求和方式，都要开一条线检测后续能否继续剪完
-最上，尝试各种长度
-</code></pre></li>
-</ol>
-<p>经过一番挣扎，我的做法还是在空间和时间复杂度上都极其不优雅。虽然题目只报了超时，但估计内存也会超。<br>查看别人的代码后总结如下优化点</p>
-<h2 id="寻找求和组合的方式"><a href="#寻找求和组合的方式" class="headerlink" title="寻找求和组合的方式"></a>寻找求和组合的方式</h2><p>我很傻的使用了独立数组去存储每种求和方式，然后把数组返回过来，再遍历一次这个数组从总sticks里去掉重复项。<br>参考的代码只用了一个数组，标记true/false，true表示用过，false没有。进行下一层递归前把用掉的数字设true，反正递归结束发现这个做法不行时会设会false。</p>
-<h2 id="完成一个长度的验证"><a href="#完成一个长度的验证" class="headerlink" title="完成一个长度的验证"></a>完成一个长度的验证</h2><p>原本我是检查是否所用sticks都用过，然而如果没次都检测所有的格子是否是true，那又是一个n^2以上。<br>参考的算法里，通过设定单个长度，和总长相除获得了全根数。只要每次找到一种合适的加法，把已找到的根数+1就可以判断是否完成人物。</p>
-<h2 id="已知组合的搜索跳过"><a href="#已知组合的搜索跳过" class="headerlink" title="已知组合的搜索跳过"></a>已知组合的搜索跳过</h2><p>在求和检测中，一次for循环里，如果当前数字无解，那么相同数字在当前遍历中也是无解的。<br>本来相对这个优化举一反三，让这次遍历中，对相同的数字全部跳过。</p>
-<h3 id="建立跳过表"><a href="#建立跳过表" class="headerlink" title="建立跳过表"></a>建立跳过表</h3><p>与标记是否使用过的表格一样，当检查到无法使用的数字时：从当前位置开始向后，把值设为true。同一次遍历中，不再检测相同的数字。<br>但下一次递归中就要重置，因为状态变化了，所以一张表只在一次遍历中有用。那么就会造成更大的空间复杂度。</p>
-<pre><code>其实这个问题已经在排序中解决过了。
-</code></pre><h1 id="最后使用的方法"><a href="#最后使用的方法" class="headerlink" title="最后使用的方法"></a>最后使用的方法</h1><p>在查阅资料后，注意到几点<br>· 数据用降序排列效率更高   <em>从头几支的搜索来分析，先搜索大的数可以减少深度。具体并不清楚。</em><br>· 基于降序排列，原本升序数组可以在==判断后剪枝的内容不可行。&gt;的情况同理    <em>原来下一位会比现在大，永远不满足判断条件。</em><br>· <strong>如果搜索中没有找到结果，也要把总长输出来（只有一根的情况）</strong><br>· _sum，就是当&lt;情况时传递的参数。如果两个判断之后 _sum==0，就跳过后续的遍历。为什么呢？它象征的是空手开始找线索。他从两种意义上来说都是必然有结果的。</p>
-<pre><code>1. 一根棒子必然属于正确解的一部分。（这样理解容易产生误差，并不排除因为组合问题导致一根棍子找不到配对的情况）
-2. 因为列表中的每一项都是解的一部分，从哪一只都应该能找到正确解。所以正确的来说只需要一个起点，并走到底。
-
-    综上，在同一次遍历中，只需要随便一跟都是对的。但如果手上已经拿这一根，但找不出答案，那可能是第二个根拿错了。
-</code></pre><h2 id="坑自己"><a href="#坑自己" class="headerlink" title="坑自己"></a>坑自己</h2><p>之前在一份C语言的参考代码中看用while跳过重复数据的写法，在学习过程中写错，对每次跳过都写了一次赋值，消耗的量比较大。<br>在最后的优化中，考虑到每次遍历记录skip下标的赋值操作是不是也会很耗，于是写了个while式的。其实没什么卵用，用64个的那组数据测试比原来写法平均长200ms。<br>这里的原因是仍然是数量级问题，因为之前写错的时候是在一次搜索里赋值好几次。而skip的方式同样是一个判断，一个赋值，甚至不用考虑 <strong>下标越界</strong>。</p>
-<p><a href="/files/pku1011.java">我的代码</a><br><a href="/files/TestData_SoManyLine.txt">测试数据·行数多</a><br><a href="/files/TestDataAnser_SoManyLine.txt">测试数据答案·行数多</a><br><a href="/files/TestData_64input.txt">测试数据·长度长</a><br><a href="/files/herface.png">测试数据答案·长度长</a>454</p>
-<p>参考代码<br><a href="http://poj.org/showmessage?message_id=348052" target="_blank" rel="external">DPS C</a><br>C中，对重复数据的跳过用了while判断，但最后一位越界没做处理。<br><a href="http://poj.org/showmessage?message_id=172596" target="_blank" rel="external">Java</a><br>这个就是我对了半天，发现效率不一样，才知道他们是降序的源头XP</p>
-
-          
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -766,7 +746,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">18</span>
+              <span class="site-state-item-count">19</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
