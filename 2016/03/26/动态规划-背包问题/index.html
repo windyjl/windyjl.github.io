@@ -1,0 +1,728 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="动态规划," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="StrikePhoenix" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="主要参考了 Hawstein的动态规划之背包问题（一）
+
+动态规划（DynamicProgramming）所谓动态规划，旨在通过上一个问题的解来求下一个问题的答案。感觉就像打死了一直BOSS后，获得了这个BOSS身上的提示，然后用来解开谜题。有时候需要先打死很多个BOSS，等解密的时候再去翻尸体。这一点在之后的代码中会体现出来。
+正式搭上动态规划这辆车之前，需要认识几个路标：状态，状态转移方程。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="动态规划 背包问题">
+<meta property="og:url" content="http://yoursite.com/2016/03/26/动态规划-背包问题/index.html">
+<meta property="og:site_name" content="StrikePhoenix">
+<meta property="og:description" content="主要参考了 Hawstein的动态规划之背包问题（一）
+
+动态规划（DynamicProgramming）所谓动态规划，旨在通过上一个问题的解来求下一个问题的答案。感觉就像打死了一直BOSS后，获得了这个BOSS身上的提示，然后用来解开谜题。有时候需要先打死很多个BOSS，等解密的时候再去翻尸体。这一点在之后的代码中会体现出来。
+正式搭上动态规划这辆车之前，需要认识几个路标：状态，状态转移方程。">
+<meta property="og:updated_time" content="2016-03-26T17:16:23.463Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="动态规划 背包问题">
+<meta name="twitter:description" content="主要参考了 Hawstein的动态规划之背包问题（一）
+
+动态规划（DynamicProgramming）所谓动态规划，旨在通过上一个问题的解来求下一个问题的答案。感觉就像打死了一直BOSS后，获得了这个BOSS身上的提示，然后用来解开谜题。有时候需要先打死很多个BOSS，等解密的时候再去翻尸体。这一点在之后的代码中会体现出来。
+正式搭上动态规划这辆车之前，需要认识几个路标：状态，状态转移方程。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 动态规划 背包问题 | StrikePhoenix </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">StrikePhoenix</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">UN-X</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                动态规划 背包问题
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-26T13:18:20+08:00" content="2016-03-26">
+              2016-03-26
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/26/动态规划-背包问题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/26/动态规划-背包问题/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>主要参考了 Hawstein的<a href="http://www.hawstein.com/posts/dp-knapsack.html" target="_blank" rel="external">动态规划之背包问题（一）</a></p>
+</blockquote>
+<h1 id="动态规划（DynamicProgramming）"><a href="#动态规划（DynamicProgramming）" class="headerlink" title="动态规划（DynamicProgramming）"></a>动态规划（DynamicProgramming）</h1><p>所谓动态规划，旨在通过上一个问题的解来求下一个问题的答案。感觉就像打死了一直BOSS后，获得了这个BOSS身上的提示，然后用来解开谜题。有时候需要先打死很多个BOSS，等解密的时候再去翻尸体。这一点在之后的代码中会体现出来。</p>
+<p>正式搭上动态规划这辆车之前，需要认识几个路标：状态，状态转移方程。</p>
+<h1 id="状态"><a href="#状态" class="headerlink" title="状态"></a>状态</h1><p>一般存储动态规划解的数组命名为dp，每一个dp[i]、d[i][j]、d[i][j][k]都是一个状态。</p>
+<pre><code>借用参考资料的例子，有n个宝石，第i课宝石体积为v[i]，价值为w[i]。使用前n种宝石，体积限制为C时，能装下的最高价值的宝石组合的最高价值为dp[n][C]。
+</code></pre><p>dp[1][10]的意思就是我只用第1颗宝石，在体积限制为10的情况下，能赚的最多的价值。<br><strong>为什么要用前n种宝石这种方式呢？这跟我们状态转移方程的使用方式有关。</strong></p>
+<h1 id="状态转移方程"><a href="#状态转移方程" class="headerlink" title="状态转移方程"></a>状态转移方程</h1><p>状态转移方程的元素有二</p>
+<ol>
+<li><strong>前置状态</strong>—— <strong>dp[i-1][j-v[i]——未考虑新宝石时，剩余体积能满足新宝石加入的解</strong></li>
+<li><strong>到当前状态的差值</strong>——<strong>w[i]——加入新宝石的变化</strong></li>
+</ol>
+<p>套入范例，如果我们要看加入新宝石后的最高价值，只要结合1、2两点的和，再与未考虑新宝石的最高价值对比。求出dp[i][j]的值。<br>原文充份讲解了状态和转移方程的含义和使用，但转移方程的推导不甚详细，特此说明。并提醒自己和其他读者注意方程的推理过程，注意逻辑严密性。参考文章着重说明了动态规划的整体，但没有针对文中例子进行完整的推导。实际运用时并非只需要关注方程的存在，还要找到合适的方程。<br>按照这个思路，我们要找到在n个宝石中，选取总体积为C的宝石，求最大值。就要找到比n或者C早一些的状态。（当然这里明确指出n和C有些作弊，已经提出了2个变量。具体问题思考时，也要分析哪些值用来表示状态）<br>案例中我们的做法就是求出第i个宝石加入前的最优解，然后找出满足第i颗宝石放入条件的前置状态。放入宝石。对比放入宝石后的值与同样体积时i-1的值，求出新的解。</p>
+<h1 id="完整推导"><a href="#完整推导" class="headerlink" title="完整推导"></a>完整推导</h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><blockquote>
+<p>PKU ACM 1014 Diving<br>同样是宝石，总共6种，每种若干个（小于两万）。求能不能平均分。<br>也就求能否求出和是sum/2。</p>
+</blockquote>
+<p>因为是求sum/2有没有解，那么可以用dp[i]&gt;0表示有解，i表示当前的和。<br>每个宝石的价值为<strong>w[j]</strong>。每个宝石的数量为<strong>m[j]</strong>。<br>dp[i+w[j]] 需要dp[i]有解。且m[j]使用的量不超标。<br>从dp[0]开始，把m[j]保存上去，dp[w[j]]=dp[0]-1;<br>如此状态转移方程的元素应该就满足了。</p>
+<ol>
+<li>前置状态——dp[i]保存剩余宝石数量</li>
+<li>到当前状态的差值——1</li>
+</ol>
+<h2 id="修正"><a href="#修正" class="headerlink" title="修正"></a>修正</h2><p>跑了一圈程序，发现刚刚的推理在实际操作中有问题。以上面的方式来说，每次找到合适的前置状态，剩余的石头都-1.这样是不对的，实际情况中能在所有有解的dp后面重新开一条递减。</p>
+<p>经过一个蹲坑的时间的思考，重新推理了一下。按照遍历过程，当dp[i]中的i不断增大，遇到dp[i]&gt;0时，必然是之前的宝石留下起点。故判断dp[i]&gt;0时，将其值赋值为宝石数量，进行新一轮递增。</p>
+<h2 id="不用担心"><a href="#不用担心" class="headerlink" title="不用担心"></a>不用担心</h2><p>虽然我思考过程中不断担心会不会在同一次遍历中，当前宝石的剩余数值干扰计算，但事实上因为顺序为题，这种情况并不会发生。他们会被早一步设成新的起点。</p>
+<p>经过几轮调试，总算改对了，用dp解出了这个问题。<br>其中一个坑居然跟我的初始化有关，因为Java自动把数组初始化为0。那么消耗掉dp[i-w[j]]&gt;0上的宝石得到的dp[i-w[j]]-1==0时会被判断为无效。而偷看的别人的代码是用-1初始化的。真是意外XP<br>于是偷懒地把所有的数值和判断都加了1。</p>
+<h1 id="意外收获"><a href="#意外收获" class="headerlink" title="意外收获"></a>意外收获</h1><p>之前思考这题的时候，总觉得当一种宝石超过一定数量后，后续的数量除了奇偶性是没有意义的，但没有充分的理由。用动态规划的状态来看的话就十分明显，例如1就很明显，他必定能在6次之内与其它数重合，开启新起点。借此优化输入数据可以更快求得解。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">import java.util.Scanner;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> Main&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Scanner in = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] marbles = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">6</span>];</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[]    dp;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> count,half;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> collections = <span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] b = &#123;<span class="number">60</span>, <span class="number">30</span>, <span class="number">20</span>, <span class="number">15</span>, <span class="number">12</span>, <span class="number">10</span>&#125;;</span><br><span class="line">        <span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">            boolean isEnd = <span class="literal">true</span>;</span><br><span class="line">            count = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">6</span>;i++)&#123;</span><br><span class="line">                marbles[i] = in.nextInt()%b[i];</span><br><span class="line">                count += (i+<span class="number">1</span>)*marbles[i];</span><br><span class="line">                <span class="keyword">if</span>(marbles[i]!=<span class="number">0</span>)</span><br><span class="line">                    isEnd = <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(isEnd)</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            collections++;</span><br><span class="line">            System.out.println(<span class="string">"Collection #"</span>+collections+<span class="string">":"</span>);</span><br><span class="line">            <span class="keyword">if</span>(count%<span class="number">2</span>==<span class="number">1</span>)&#123;</span><br><span class="line">                System.out.println(<span class="string">"Can't be divided.\n"</span>);</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                half = count/<span class="number">2</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            dp = <span class="keyword">new</span> <span class="keyword">int</span>[half+<span class="number">1</span>];</span><br><span class="line">            boolean res = <span class="literal">false</span>;</span><br><span class="line">            <span class="comment">//dynamic programming</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">5</span>;i&gt;=<span class="number">0</span>;i--)&#123;</span><br><span class="line">                dp[<span class="number">0</span>]=marbles[i]+<span class="number">1</span>;</span><br><span class="line">                <span class="keyword">if</span>(marbles[i]&lt;=<span class="number">0</span>)<span class="keyword">continue</span>;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;half+<span class="number">1</span>;j++)&#123;</span><br><span class="line">                    <span class="keyword">if</span>(dp[j]&gt;<span class="number">0</span>)dp[j]=marbles[i]+<span class="number">1</span>;    <span class="comment">// plus 1 means flags, all the judgement need 1 more, because we don't init as -1 XP</span></span><br><span class="line">                    <span class="keyword">if</span>(i+<span class="number">1</span>&lt;=j &amp;&amp; dp[j-i-<span class="number">1</span>]&gt;<span class="number">1</span>)&#123;</span><br><span class="line">                        dp[j] = dp[j-i-<span class="number">1</span>]-<span class="number">1</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(dp[half]&gt;<span class="number">0</span>)</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(dp[half]&gt;<span class="number">0</span>)&#123;</span><br><span class="line">                System.out.println(<span class="string">"Can be divided.\n"</span>);</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                System.out.println(<span class="string">"Can't be divided.\n"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/动态规划/" rel="tag">#动态规划</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/03/23/PKU-ACM-1014-Dividing/" rel="next" title="PKU ACM 1014 Dividing">
+                <i class="fa fa-chevron-left"></i> PKU ACM 1014 Dividing
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/03/26/动态规划-背包问题/"
+           data-title="动态规划 背包问题" data-url="http://yoursite.com/2016/03/26/动态规划-背包问题/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/herface.png"
+               alt="windYJL" />
+          <p class="site-author-name" itemprop="name">windYJL</p>
+          <p class="site-description motion-element" itemprop="description">Create a way make 1 to O</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#动态规划（DynamicProgramming）"><span class="nav-number">1.</span> <span class="nav-text">动态规划（DynamicProgramming）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#状态"><span class="nav-number">2.</span> <span class="nav-text">状态</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#状态转移方程"><span class="nav-number">3.</span> <span class="nav-text">状态转移方程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#完整推导"><span class="nav-number">4.</span> <span class="nav-text">完整推导</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目"><span class="nav-number">4.1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修正"><span class="nav-number">4.2.</span> <span class="nav-text">修正</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#不用担心"><span class="nav-number">4.3.</span> <span class="nav-text">不用担心</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#意外收获"><span class="nav-number">5.</span> <span class="nav-text">意外收获</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">windYJL</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  
+
+
+  
+
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=0.5.0"></script>
+
+
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"windyjl"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+
+  
+  
+
+
+</body>
+</html>
