@@ -191,15 +191,103 @@
 
     
     
+
+    
       
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/03/31/git-error-src-refspec-master-does-not-match-any/" itemprop="url">
+                  git error: src refspec master does not match any
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-31T18:07:14+08:00" content="2016-03-31">
+              2016-03-31
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/31/git-error-src-refspec-master-does-not-match-any/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/31/git-error-src-refspec-master-does-not-match-any/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
       
-        
-        
-        
       
 
       
-    
+        
+          
+            <p>做完js的作业，提交代码的时候提示了这个。<br><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git push -u origin <span class="keyword">master</span></span><br><span class="line"><span class="title">error</span>: src refspec <span class="keyword">master</span> <span class="title">does</span> not match any</span><br></pre></td></tr></table></figure></p>
+<h1 id="通常情况"><a href="#通常情况" class="headerlink" title="通常情况"></a>通常情况</h1><p>各方搜索都说我们本地什么东西都没有，所以不让提交。通常的解决方案是这个<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">touch README</span><br><span class="line">git add README </span><br><span class="line">git <span class="operator"><span class="keyword">commit</span> -<span class="keyword">m</span> <span class="string">'first commit'</span></span><br><span class="line">git push origin <span class="keyword">master</span></span></span><br></pre></td></tr></table></figure></p>
+<h1 id="我的情况"><a href="#我的情况" class="headerlink" title="我的情况"></a>我的情况</h1><p>然而我本地都commit好多次了，怎么会是没东西提交呢？<br>在stackoverflow上找到一个Vi.的人提供了以下方法。 <a href="http://stackoverflow.com/a/4183856" target="_blank" rel="external">原文</a></p>
+<ol>
+<li>Try <strong>git show-ref</strong> to see what refs do you have. Is there <strong>refs/heads/master</strong>?</li>
+<li>You can try <strong>git push origin HEAD:master</strong> as more local-reference-independent solution.</li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
 
     
       
@@ -618,109 +706,12 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/03/15/GlobalGamejam-2014-这边！这边！（This-Ways）/" itemprop="url">
-                  GlobalGamejam 2014 这边！这边！（This Ways）
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-15T15:30:02+08:00" content="2016-03-15">
-              2016-03-15
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/03/15/GlobalGamejam-2014-这边！这边！（This-Ways）/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/15/GlobalGamejam-2014-这边！这边！（This-Ways）/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="小伙伴"><a href="#小伙伴" class="headerlink" title="小伙伴"></a>小伙伴</h1><p>程序：upupzealot(独立游戏吧主)<br>美术：廖毅（《汐》作者）、seedsman<br>关卡策划：穆风（本人）</p>
-<h1 id="游戏简介"><a href="#游戏简介" class="headerlink" title="游戏简介"></a>游戏简介</h1><h2 id="寓意"><a href="#寓意" class="headerlink" title="寓意"></a>寓意</h2><p>主人公所遇到的困境会是目前的他没有办法解决的，但只要你一直走不回头，世界会给你让出一条路。</p>
-<h2 id="特色"><a href="#特色" class="headerlink" title="特色"></a>特色</h2><p>在烂大街的横版跳台基础上，加上了不太烂大街的4方向重力转换，以及独创的<strong>第5重力方向（垂直于屏幕，就是推箱子）</strong>与<strong>世界线（第5重力于4向重力切换）</strong>。<br>游戏中同时包含操作难度和解密难度。如图1中，推箱子重力下地面的尖刺无法通过，需要推动箱子来盖住尖刺。又如图2中，跳台中的尖刺有很微妙的碰撞判断，需要精密的操作来通过。<br><img src="/images/ggj2014/this way pushbox.jpg" alt="平面视角"></p>
-<center>图1</center><br><img src="/images/ggj2014/this way jump.jpg" alt="跳台视角"><br><center>图2</center>
-
-<h1 id="制作总结"><a href="#制作总结" class="headerlink" title="制作总结"></a>制作总结</h1><pre><code>Theme&quot;We don&apos;t see things as they are, we see them as we are.&quot;
-</code></pre><p>想只靠游戏的玩法方式来体现主题很有难度。那是个人第一次参加Gamejam，发觉大家对主题的表达都不是很好，大多都是靠演示的人来口头总结，并没有通过游戏体验到。<br>以自己小队的作品来说，我们提出了多方向来解决难题，这是玩法上的。但寓意上，“金城所致金石为开”的意思完全没有出来。<br>真的要表达这个效果的话，恐怕使用文字描述比玩法展示要好得多。<br>以大神级游戏《Braid》来说，<strong>它的做法是用文字叙述了简单的故事，在略显单薄的故事里抽取几个意象放到玩法里。用这几个意象作为路标，把玩法和故事串联起来。</strong><br>另外，第一次gamejam认识的朋友非常给力。</p>
-
-          
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -761,7 +752,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-count">21</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -771,7 +762,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

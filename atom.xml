@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-03-28T04:00:25.455Z</updated>
+  <updated>2016-03-31T10:26:46.720Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>git error: src refspec master does not match any</title>
+    <link href="http://yoursite.com/2016/03/31/git-error-src-refspec-master-does-not-match-any/"/>
+    <id>http://yoursite.com/2016/03/31/git-error-src-refspec-master-does-not-match-any/</id>
+    <published>2016-03-31T10:07:14.000Z</published>
+    <updated>2016-03-31T10:26:46.720Z</updated>
+    
+    <content type="html">&lt;p&gt;做完js的作业，提交代码的时候提示了这个。&lt;br&gt;&lt;figure class=&quot;highlight crmsh&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;git push -u origin &lt;span class=&quot;keyword&quot;&gt;master&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;title&quot;&gt;error&lt;/span&gt;: src refspec &lt;span class=&quot;keyword&quot;&gt;master&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;does&lt;/span&gt; not match any&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h1 id=&quot;通常情况&quot;&gt;&lt;a href=&quot;#通常情况&quot; class=&quot;headerlink&quot; title=&quot;通常情况&quot;&gt;&lt;/a&gt;通常情况&lt;/h1&gt;&lt;p&gt;各方搜索都说我们本地什么东西都没有，所以不让提交。通常的解决方案是这个&lt;br&gt;&lt;figure class=&quot;highlight sql&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;touch README&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;git add README &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;git &lt;span class=&quot;operator&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;commit&lt;/span&gt; -&lt;span class=&quot;keyword&quot;&gt;m&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&#39;first commit&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;git push origin &lt;span class=&quot;keyword&quot;&gt;master&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h1 id=&quot;我的情况&quot;&gt;&lt;a href=&quot;#我的情况&quot; class=&quot;headerlink&quot; title=&quot;我的情况&quot;&gt;&lt;/a&gt;我的情况&lt;/h1&gt;&lt;p&gt;然而我本地都commit好多次了，怎么会是没东西提交呢？&lt;br&gt;在stackoverflow上找到一个Vi.的人提供了以下方法。 &lt;a href=&quot;http://stackoverflow.com/a/4183856&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;原文&lt;/a&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Try &lt;strong&gt;git show-ref&lt;/strong&gt; to see what refs do you have. Is there &lt;strong&gt;refs/heads/master&lt;/strong&gt;?&lt;/li&gt;
+&lt;li&gt;You can try &lt;strong&gt;git push origin HEAD:master&lt;/strong&gt; as more local-reference-independent solution.&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;做完js的作业，提交代码的时候提示了这个。&lt;br&gt;&lt;figure class=&quot;highlight crmsh&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;l
+    
+    </summary>
+    
+    
+      <category term="git" scheme="http://yoursite.com/tags/git/"/>
+    
+  </entry>
   
   <entry>
     <title>动态规划 背包问题</title>
@@ -651,54 +678,6 @@ git 提示我需要加-r ，加载末尾就好了
     <summary type="html">
     
       &lt;p&gt;Welcome to &lt;a href=&quot;http://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;http://hexo.io
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>my 1st post</title>
-    <link href="http://yoursite.com/2016/02/27/my-1st-post/"/>
-    <id>http://yoursite.com/2016/02/27/my-1st-post/</id>
-    <published>2016-02-27T08:15:33.000Z</published>
-    <updated>2016-02-27T08:59:43.288Z</updated>
-    
-    <content type="html">&lt;h1 id=&quot;MD测试&quot;&gt;&lt;a href=&quot;#MD测试&quot; class=&quot;headerlink&quot; title=&quot;MD测试&quot;&gt;&lt;/a&gt;MD测试&lt;/h1&gt;&lt;p&gt;这是一段文字&lt;br&gt;        这应该是一段能带吗&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;撒旦发
-&lt;/code&gt;&lt;/pre&gt;&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;为知笔记&lt;/th&gt;
-&lt;th&gt;更新&lt;/th&gt;
-&lt;th&gt;版本&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;WizNote&lt;/td&gt;
-&lt;td&gt;Markdown&lt;/td&gt;
-&lt;td&gt;Latest&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;figure class=&quot;highlight aspectj&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;asdf&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    pritn(&lt;span class=&quot;string&quot;&gt;&quot;にまび&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;听说还有引用&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;这话不是我说的&lt;br&gt;但是说的很有道理&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;figure class=&quot;highlight cpp&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; i = &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;; i = &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; (&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; i = &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;; i &amp;lt; &lt;span class=&quot;number&quot;&gt;100&lt;/span&gt;; i++)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;built_in&quot;&gt;printf&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;hello markdown!\n&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;[TOC]&lt;/p&gt;
-&lt;p&gt;###Markdown 是什么&lt;/p&gt;
-&lt;p&gt;####Markdown 的好处&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;asdf&lt;/strong&gt;&lt;br&gt;&lt;del&gt;sadf&lt;/del&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;MD测试&quot;&gt;&lt;a href=&quot;#MD测试&quot; class=&quot;headerlink&quot; title=&quot;MD测试&quot;&gt;&lt;/a&gt;MD测试&lt;/h1&gt;&lt;p&gt;这是一段文字&lt;br&gt;        这应该是一段能带吗&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;撒旦发
-&lt;/code&gt;&lt;/pre&gt;&lt;t
     
     </summary>
     
