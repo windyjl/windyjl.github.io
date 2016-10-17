@@ -1,0 +1,717 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="BluePrint,UE4,UnrealEngine,局域网,蓝图," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="StrikePhoenix" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="和朋友合作制作UE4游戏的时候，决定采用UE4内置的局域网联机功能配合Steam快速实现。实践摸索中遇到了不少问题，UE4作为一个商业引擎，其中也带有不少个人色彩的包装。很多降低耦合度的功能乍一看增加了不少工作量，两两关系的跳跃性让人很难一下子想明白。另外官方中文文档的翻译质量也是参差不齐，一些把加粗专用名词翻译成了普通中文，总之想看官方文档弄懂简直就是噩梦。
+经过实践总结后，这里记录一下我被弄混">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ue4 蓝图局域网设置总结">
+<meta property="og:url" content="http://yoursite.com/2016/10/17/ue4-局域网设置总结/index.html">
+<meta property="og:site_name" content="StrikePhoenix">
+<meta property="og:description" content="和朋友合作制作UE4游戏的时候，决定采用UE4内置的局域网联机功能配合Steam快速实现。实践摸索中遇到了不少问题，UE4作为一个商业引擎，其中也带有不少个人色彩的包装。很多降低耦合度的功能乍一看增加了不少工作量，两两关系的跳跃性让人很难一下子想明白。另外官方中文文档的翻译质量也是参差不齐，一些把加粗专用名词翻译成了普通中文，总之想看官方文档弄懂简直就是噩梦。
+经过实践总结后，这里记录一下我被弄混">
+<meta property="og:image" content="http://yoursite.com/images/ue4/Replication_setting.jpg">
+<meta property="og:updated_time" content="2016-10-17T15:32:43.512Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ue4 蓝图局域网设置总结">
+<meta name="twitter:description" content="和朋友合作制作UE4游戏的时候，决定采用UE4内置的局域网联机功能配合Steam快速实现。实践摸索中遇到了不少问题，UE4作为一个商业引擎，其中也带有不少个人色彩的包装。很多降低耦合度的功能乍一看增加了不少工作量，两两关系的跳跃性让人很难一下子想明白。另外官方中文文档的翻译质量也是参差不齐，一些把加粗专用名词翻译成了普通中文，总之想看官方文档弄懂简直就是噩梦。
+经过实践总结后，这里记录一下我被弄混">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> ue4 蓝图局域网设置总结 | StrikePhoenix </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">StrikePhoenix</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">UN-X</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                ue4 蓝图局域网设置总结
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-17T22:21:45+08:00" content="2016-10-17">
+              2016-10-17
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/10/17/ue4-局域网设置总结/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/17/ue4-局域网设置总结/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>和朋友合作制作UE4游戏的时候，决定采用UE4内置的局域网联机功能配合Steam快速实现。<br>实践摸索中遇到了不少问题，UE4作为一个商业引擎，其中也带有不少个人色彩的包装。很多降低耦合度的功能乍一看增加了不少工作量，两两关系的跳跃性让人很难一下子想明白。<br>另外官方中文文档的翻译质量也是参差不齐，一些把加粗专用名词翻译成了普通中文，总之想看官方文档弄懂简直就是噩梦。</p>
+<p>经过实践总结后，这里记录一下我被弄混效果的名词。</p>
+<h1 id="RPC"><a href="#RPC" class="headerlink" title="RPC"></a>RPC</h1><p>远程过程调用<br>这个是联网游戏中经常使用的工具，使用蓝图时，可以在自定义事件（CustomEvent）的“Replicates”属性中设置。主要分为 <strong>OnOwningClient</strong>、<strong>Multicast</strong>、<strong>OnServer</strong>。<br>通过这三种不同的设置，才能达到合理的联网效果。</p>
+<p>了解具体作法前，先了解一下这几种方式的不同。</p>
+<h2 id="OnOwningClient与Actor所属的链接"><a href="#OnOwningClient与Actor所属的链接" class="headerlink" title="OnOwningClient与Actor所属的链接"></a>OnOwningClient与Actor所属的链接</h2><p>OnOwningClient涉及一个偏门设定，actor所属的链接，实际上指的是一个客户端。<br>在目前的实践中，Actor所属的链接通常指的就是控制对应角色的电脑。<br>比如有P1、P2、P3三个玩家，P1是局域网的主机，对应C1、C2、C3三台电脑。那么P1玩家的角色（UE4中一般是个Character对象，Actor的子类）所属的链接就是C1，其他一一对应。<br>Client形式的事件只能通过服务器端调用，在所属客户端上运行。比如服务器算出P3玩家中了“致盲”效果，调用P3角色的功能让屏幕变黑。这时只会令C3上出现黑屏。</p>
+<h2 id="OnServer"><a href="#OnServer" class="headerlink" title="OnServer"></a>OnServer</h2><p>只能从客户端调用，在服务器上运行。<br>当然如果是局域网联机，那么主机也是一个客户端，并不会造成主机本身无法使用这个类型的事件。</p>
+<h3 id="意义"><a href="#意义" class="headerlink" title="意义"></a>意义</h3><p>把需要全体统一的处理交给服务器，而非每个客户端各自运算。<br>比如P2扣了血，那么就只有C2调用扣血事件，由服务器运行。</p>
+<h2 id="Multicast"><a href="#Multicast" class="headerlink" title="Multicast"></a>Multicast</h2><p>最操蛋的存在。它可以在客户端和服务端分别调用，产生不同的效果。<br>客户端调用时只在当前客户端产生效果，在服务端调用则会广播。</p>
+<h2 id="Reliable-勾选框"><a href="#Reliable-勾选框" class="headerlink" title="Reliable 勾选框"></a>Reliable 勾选框</h2><p>通常发给客户的事件都是表演性质的。比如爆炸动画、声音播放，偶尔丢失一两个不会造成游戏逻辑错误。如果需要保证通讯成功，勾选这个。</p>
+<h1 id="局域网连接的做法"><a href="#局域网连接的做法" class="headerlink" title="局域网连接的做法"></a>局域网连接的做法</h1><p>一些基本的功能并不需要特别通过广播进行同步，在UE4中特地为每个属性准备了Replication属性。有None、Replicated、RepNotify。<br><img src="/images/ue4/Replication_setting.jpg" alt="截图"></p>
+<h2 id="Replicated"><a href="#Replicated" class="headerlink" title="Replicated"></a>Replicated</h2><p>这个属性设置成Replicated时非常有用，它的意思是从服务器上把数据同步下来。相当于这个值并不存在本地副本，它始终保持和服务器一致。<br>大部分的逻辑中，客户端不需要重复服务器的操作，只需要数据保持一致就可以。</p>
+<h2 id="RepNotify"><a href="#RepNotify" class="headerlink" title="RepNotify"></a>RepNotify</h2><p>RepNotify是对上述功能的拓展，在同步的基础上自动生成一个事件，每当值变化时就自动调用这个事件。<br>假如你不但需要保持一致，而且每次修改时要做一些事情（比如重复一次服务器操作），你就可以把对应的操作写到这个事件中（当然也可以用广播形式）。</p>
+<h2 id="我使用的情况"><a href="#我使用的情况" class="headerlink" title="我使用的情况"></a>我使用的情况</h2><p>当一个玩家吃了道具获得足够的分数获胜时，让所有玩家游戏结束。<br>首先在吃到球的Overlap或Hit事件里（Actor调用，全部玩家都会发生），调用OnServer型的分数计算事件。<br>分数计算事件甚至可以和吃球事件写在同一个蓝图中。<br>然后在分数计算事件中，做好逻辑处理。当游戏可以结束时，调用Multicast的游戏结束事件。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>OnServer→Multicast的结合使用。</p>
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/BluePrint/" rel="tag">#BluePrint</a>
+          
+            <a href="/tags/UE4/" rel="tag">#UE4</a>
+          
+            <a href="/tags/UnrealEngine/" rel="tag">#UnrealEngine</a>
+          
+            <a href="/tags/局域网/" rel="tag">#局域网</a>
+          
+            <a href="/tags/蓝图/" rel="tag">#蓝图</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/05/02/PKU-ACM-1015-Jury-Compromise/" rel="next" title="PKU ACM 1015 Jury Compromise">
+                <i class="fa fa-chevron-left"></i> PKU ACM 1015 Jury Compromise
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/10/17/ue4-局域网设置总结/"
+           data-title="ue4 蓝图局域网设置总结" data-url="http://yoursite.com/2016/10/17/ue4-局域网设置总结/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/herface.png"
+               alt="windYJL" />
+          <p class="site-author-name" itemprop="name">windYJL</p>
+          <p class="site-description motion-element" itemprop="description">Create a way make O to 1</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">24</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#RPC"><span class="nav-number">1.</span> <span class="nav-text">RPC</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#OnOwningClient与Actor所属的链接"><span class="nav-number">1.1.</span> <span class="nav-text">OnOwningClient与Actor所属的链接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OnServer"><span class="nav-number">1.2.</span> <span class="nav-text">OnServer</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#意义"><span class="nav-number">1.2.1.</span> <span class="nav-text">意义</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Multicast"><span class="nav-number">1.3.</span> <span class="nav-text">Multicast</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reliable-勾选框"><span class="nav-number">1.4.</span> <span class="nav-text">Reliable 勾选框</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#局域网连接的做法"><span class="nav-number">2.</span> <span class="nav-text">局域网连接的做法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Replicated"><span class="nav-number">2.1.</span> <span class="nav-text">Replicated</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RepNotify"><span class="nav-number">2.2.</span> <span class="nav-text">RepNotify</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#我使用的情况"><span class="nav-number">2.3.</span> <span class="nav-text">我使用的情况</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">2.3.1.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">windYJL</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  
+
+
+  
+
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=0.5.0"></script>
+
+
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"windyjl"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+
+  
+  
+
+
+</body>
+</html>

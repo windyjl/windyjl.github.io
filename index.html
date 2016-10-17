@@ -214,6 +214,110 @@
             
               
                 
+                <a class="post-title-link" href="/2016/10/17/ue4-局域网设置总结/" itemprop="url">
+                  ue4 蓝图局域网设置总结
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-17T22:21:45+08:00" content="2016-10-17">
+              2016-10-17
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/10/17/ue4-局域网设置总结/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/17/ue4-局域网设置总结/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>和朋友合作制作UE4游戏的时候，决定采用UE4内置的局域网联机功能配合Steam快速实现。<br>实践摸索中遇到了不少问题，UE4作为一个商业引擎，其中也带有不少个人色彩的包装。很多降低耦合度的功能乍一看增加了不少工作量，两两关系的跳跃性让人很难一下子想明白。<br>另外官方中文文档的翻译质量也是参差不齐，一些把加粗专用名词翻译成了普通中文，总之想看官方文档弄懂简直就是噩梦。</p>
+<p>经过实践总结后，这里记录一下我被弄混效果的名词。</p>
+<h1 id="RPC"><a href="#RPC" class="headerlink" title="RPC"></a>RPC</h1><p>远程过程调用<br>这个是联网游戏中经常使用的工具，使用蓝图时，可以在自定义事件（CustomEvent）的“Replicates”属性中设置。主要分为 <strong>OnOwningClient</strong>、<strong>Multicast</strong>、<strong>OnServer</strong>。<br>通过这三种不同的设置，才能达到合理的联网效果。</p>
+<p>了解具体作法前，先了解一下这几种方式的不同。</p>
+<h2 id="OnOwningClient与Actor所属的链接"><a href="#OnOwningClient与Actor所属的链接" class="headerlink" title="OnOwningClient与Actor所属的链接"></a>OnOwningClient与Actor所属的链接</h2><p>OnOwningClient涉及一个偏门设定，actor所属的链接，实际上指的是一个客户端。<br>在目前的实践中，Actor所属的链接通常指的就是控制对应角色的电脑。<br>比如有P1、P2、P3三个玩家，P1是局域网的主机，对应C1、C2、C3三台电脑。那么P1玩家的角色（UE4中一般是个Character对象，Actor的子类）所属的链接就是C1，其他一一对应。<br>Client形式的事件只能通过服务器端调用，在所属客户端上运行。比如服务器算出P3玩家中了“致盲”效果，调用P3角色的功能让屏幕变黑。这时只会令C3上出现黑屏。</p>
+<h2 id="OnServer"><a href="#OnServer" class="headerlink" title="OnServer"></a>OnServer</h2><p>只能从客户端调用，在服务器上运行。<br>当然如果是局域网联机，那么主机也是一个客户端，并不会造成主机本身无法使用这个类型的事件。</p>
+<h3 id="意义"><a href="#意义" class="headerlink" title="意义"></a>意义</h3><p>把需要全体统一的处理交给服务器，而非每个客户端各自运算。<br>比如P2扣了血，那么就只有C2调用扣血事件，由服务器运行。</p>
+<h2 id="Multicast"><a href="#Multicast" class="headerlink" title="Multicast"></a>Multicast</h2><p>最操蛋的存在。它可以在客户端和服务端分别调用，产生不同的效果。<br>客户端调用时只在当前客户端产生效果，在服务端调用则会广播。</p>
+<h2 id="Reliable-勾选框"><a href="#Reliable-勾选框" class="headerlink" title="Reliable 勾选框"></a>Reliable 勾选框</h2><p>通常发给客户的事件都是表演性质的。比如爆炸动画、声音播放，偶尔丢失一两个不会造成游戏逻辑错误。如果需要保证通讯成功，勾选这个。</p>
+<h1 id="局域网连接的做法"><a href="#局域网连接的做法" class="headerlink" title="局域网连接的做法"></a>局域网连接的做法</h1><p>一些基本的功能并不需要特别通过广播进行同步，在UE4中特地为每个属性准备了Replication属性。有None、Replicated、RepNotify。<br><img src="/images/ue4/Replication_setting.jpg" alt="截图"></p>
+<h2 id="Replicated"><a href="#Replicated" class="headerlink" title="Replicated"></a>Replicated</h2><p>这个属性设置成Replicated时非常有用，它的意思是从服务器上把数据同步下来。相当于这个值并不存在本地副本，它始终保持和服务器一致。<br>大部分的逻辑中，客户端不需要重复服务器的操作，只需要数据保持一致就可以。</p>
+<h2 id="RepNotify"><a href="#RepNotify" class="headerlink" title="RepNotify"></a>RepNotify</h2><p>RepNotify是对上述功能的拓展，在同步的基础上自动生成一个事件，每当值变化时就自动调用这个事件。<br>假如你不但需要保持一致，而且每次修改时要做一些事情（比如重复一次服务器操作），你就可以把对应的操作写到这个事件中（当然也可以用广播形式）。</p>
+<h2 id="我使用的情况"><a href="#我使用的情况" class="headerlink" title="我使用的情况"></a>我使用的情况</h2><p>当一个玩家吃了道具获得足够的分数获胜时，让所有玩家游戏结束。<br>首先在吃到球的Overlap或Hit事件里（Actor调用，全部玩家都会发生），调用OnServer型的分数计算事件。<br>分数计算事件甚至可以和吃球事件写在同一个蓝图中。<br>然后在分数计算事件中，做好逻辑处理。当游戏可以结束时，调用Multicast的游戏结束事件。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>OnServer→Multicast的结合使用。</p>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/05/02/PKU-ACM-1015-Jury-Compromise/" itemprop="url">
                   PKU ACM 1015 Jury Compromise
                 </a>
@@ -615,104 +719,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/03/23/PKU-ACM-1014-Dividing/" itemprop="url">
-                  PKU ACM 1014 Dividing
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-23T21:27:48+08:00" content="2016-03-23">
-              2016-03-23
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/03/23/PKU-ACM-1014-Dividing/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/23/PKU-ACM-1014-Dividing/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h1><p>输入n1 n2 …… n6，每个位置代表对应分值有多少数量。要平均分两份。</p>
-<h1 id="梳理"><a href="#梳理" class="headerlink" title="梳理"></a>梳理</h1><ol>
-<li>首先总和一定要是偶数</li>
-<li>找出一种方法，其和是总值的一半。这个跟之前做的stick很像。（如果是这样，那么主要工作量在剪枝）</li>
-</ol>
-<h1 id="中途做了一半重新梳理"><a href="#中途做了一半重新梳理" class="headerlink" title="中途做了一半重新梳理"></a>中途做了一半重新梳理</h1><p>虽然用深度搜索可以完成工作，但是面对稍微大量的数据就会十分缓慢。所以决定拆了重写。<br>首先确定如果每一位上都是偶数，那么肯定是能够平均分的。<br>如果某一位上是奇数，则拆借其他位置上的数来补充。<br>补充时，以对应数字的1倍到最大公倍数60为跨度。比如6分的石头是奇数个，那么用5补充时，发现配不平，则采用12,18,24,30。30的时候发现平了等等。<br>暂时称为借位搜索。</p>
-<h1 id="最后梳理"><a href="#最后梳理" class="headerlink" title="最后梳理"></a>最后梳理</h1><p>前一版提出的算法并不成熟，当然一个下午想闭门造出新的算法也很不实际。最后提交版本用的是优化输入数据的办法，继续深度搜索。<br>因为各个数字超过一定数量后，都可以用他们本身的数量去填平其他数字不足的地方。比如我有100个1，那其他数字再怎么折腾也能配得平了。<br>那具体多少个呢？严谨地说没算出来。有人建议是最小公倍数/value,也就是代码中的值。</p>
-<pre><code>然而并没有结束，我最后需要研究下**动态规划**求另一种解法。
-</code></pre><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br></pre></td><td class="code"><pre><span class="line">import java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> Main&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Scanner in = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] marbles = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">6</span>];</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> count,half;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> collections = <span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span>[] b = &#123;<span class="number">60</span>, <span class="number">30</span>, <span class="number">20</span>, <span class="number">15</span>, <span class="number">12</span>, <span class="number">10</span>&#125;;</span><br><span class="line">        <span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">            boolean isEnd = <span class="literal">true</span>;</span><br><span class="line">            count = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">6</span>;i++)&#123;</span><br><span class="line">                marbles[i] = in.nextInt()%b[i];</span><br><span class="line">                count += (i+<span class="number">1</span>)*marbles[i];</span><br><span class="line">                <span class="keyword">if</span>(marbles[i]!=<span class="number">0</span>)</span><br><span class="line">                    isEnd = <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(isEnd)</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            collections++;</span><br><span class="line">            System.out.println(<span class="string">"Collection #"</span>+collections+<span class="string">":"</span>);</span><br><span class="line"><span class="comment">//Collection #1:</span></span><br><span class="line"><span class="comment">//Can't be divided.         </span></span><br><span class="line">            <span class="keyword">if</span>(count%<span class="number">2</span>==<span class="number">1</span>)&#123;</span><br><span class="line">                System.out.println(<span class="string">"Can't be divided.\n"</span>);</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                half = count/<span class="number">2</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            boolean res = <span class="literal">false</span>;</span><br><span class="line"><span class="comment">//          if(count&gt;1000)&#123;</span></span><br><span class="line"><span class="comment">//              res = cs(5);</span></span><br><span class="line"><span class="comment">//          &#125;else </span></span><br><span class="line">            &#123;</span><br><span class="line">                res = dfs(half,<span class="number">0</span>,-<span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(res)&#123;</span><br><span class="line">                System.out.println(<span class="string">"Can be divided.\n"</span>);</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                System.out.println(<span class="string">"Can't be divided.\n"</span>);</span><br><span class="line">            &#125;</span><br><span class="line"><span class="comment">//          String str = "";</span></span><br><span class="line"><span class="comment">//          for(int i=0;i&lt;6;i++)&#123;</span></span><br><span class="line"><span class="comment">//              str += marbles[i] + " ";</span></span><br><span class="line"><span class="comment">//          &#125;</span></span><br><span class="line"><span class="comment">//          System.out.println(str);</span></span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> boolean <span class="title">cs</span><span class="params">(<span class="keyword">int</span> depth)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (depth==<span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span>(marbles[depth]%<span class="number">2</span>==<span class="number">0</span>)&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(marbles[depth]%<span class="number">2</span>==<span class="number">0</span>)&#123;</span><br><span class="line">                <span class="keyword">return</span> cs(depth-<span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; <span class="number">60</span>/(depth+<span class="number">1</span>)&gt;=i<span class="comment">/*&amp;&amp;(depth+1)*i&lt;half*/</span>; i++) &#123;</span><br><span class="line">                    <span class="keyword">if</span>(dfs((depth+<span class="number">1</span>)*i,<span class="number">0</span>,depth))&#123;</span><br><span class="line">                        marbles[depth]-=i;</span><br><span class="line">                        <span class="keyword">return</span> cs(depth-<span class="number">1</span>);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// public static boolean dfs(int target,int sum)&#123;</span></span><br><span class="line">    <span class="comment">//  if(sum&lt;target)&#123;</span></span><br><span class="line">    <span class="comment">//      for(int i=5;i&gt;=0;i--)&#123;</span></span><br><span class="line">    <span class="comment">//          if(marbles[i]&lt;=0)&#123;</span></span><br><span class="line">    <span class="comment">//              continue;</span></span><br><span class="line">    <span class="comment">//          &#125;</span></span><br><span class="line">    <span class="comment">//          if(i+1+sum&lt;target)&#123;</span></span><br><span class="line">    <span class="comment">//              marbles[i]--;</span></span><br><span class="line">    <span class="comment">//              if(dfs(sum+i+1,target))&#123;</span></span><br><span class="line">    <span class="comment">//                  return dfs();</span></span><br><span class="line">    <span class="comment">//              &#125;else&#123;</span></span><br><span class="line">    <span class="comment">//                  marbles[i]++;</span></span><br><span class="line">    <span class="comment">//              &#125;</span></span><br><span class="line">    <span class="comment">//          &#125;</span></span><br><span class="line">    <span class="comment">//          else if(i+1+sum==target)&#123;</span></span><br><span class="line">    <span class="comment">//              return dfs(0,0,depth-1);</span></span><br><span class="line">    <span class="comment">//          &#125;</span></span><br><span class="line">    <span class="comment">//      &#125;</span></span><br><span class="line">    <span class="comment">//  &#125;</span></span><br><span class="line">    <span class="comment">// &#125;</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> boolean <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> target,<span class="keyword">int</span> sum,<span class="keyword">int</span> skip)</span></span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">5</span>;i&gt;=<span class="number">0</span>;i--)&#123;</span><br><span class="line">            <span class="keyword">if</span>(i==skip)<span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">if</span>(marbles[i]&lt;=<span class="number">0</span>)&#123;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(i+<span class="number">1</span>+sum&lt;target)&#123;</span><br><span class="line">                marbles[i]--;</span><br><span class="line">                <span class="keyword">if</span>(dfs(target,sum+i+<span class="number">1</span>,skip))&#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    marbles[i]++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(i+<span class="number">1</span>+sum==target)&#123;</span><br><span class="line">                marbles[i]--;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -759,7 +765,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">23</span>
+              <span class="site-state-item-count">24</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -769,7 +775,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">15</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
